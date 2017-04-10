@@ -1,0 +1,22 @@
+{
+  "name": "dear-stitp",
+  "version": "1.0.0",
+  "description": "njupt stitp for my dear",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tingyugetc/dear-stitp.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "tingyugetc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tingyugetc/dear-stitp/issues"
+  },
+  "homepage": "https://github.com/tingyugetc/dear-stitp#readme"
+}
