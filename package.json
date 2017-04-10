@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/tingyugetc/dear-stitp/issues"
   },
-  "homepage": "https://github.com/tingyugetc/dear-stitp#readme"
+  "homepage": "https://github.com/tingyugetc/dear-stitp#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
