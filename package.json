@@ -1,25 +1,17 @@
 {
   "name": "dear-stitp",
-  "version": "1.0.0",
-  "description": "njupt stitp for my dear",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tingyugetc/dear-stitp.git"
-  },
-  "keywords": [
-    "express"
-  ],
-  "author": "tingyugetc",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tingyugetc/dear-stitp/issues"
-  },
-  "homepage": "https://github.com/tingyugetc/dear-stitp#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "body-parser": "~1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "serve-favicon": "~2.4.2"
   }
 }
