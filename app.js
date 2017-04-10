@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -21,6 +22,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// 连接mongodb
+mongoose.connect('mongodb://localhost/dear-stitp');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, '链接错误'));
 
 app.use('/', index);
 app.use('/users', users);
