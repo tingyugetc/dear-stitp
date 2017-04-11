@@ -2,33 +2,33 @@
  * Created by tingyugetc on 17/4/10.
  */
 
-const CodeMsg = require('../utils/code');
+const CodeMsg = require('../utils/code').code;
 const User = require('../models/user').User;
 
 
-exports.create_user = function (req, res) {
+exports.create_user = function (req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
     console.log(username, password);
 
-    var user = new User({
-        username: username,
-        password: password
-    });
-
-    user.save(function (err) {
-        if (err) {
-            return res.json({
-                code: err.code,
-                message: CodeMsg[err.code] || CodeMsg['500']
-            });
+    User.create({
+            username: username,
+            password: password
+        }, function (err) {
+            if (err) {
+                console.log(err);
+                return res.json({
+                    code: err.code,
+                    message: CodeMsg[err.code] || CodeMsg['500']
+                });
+            } else {
+                return res.json({
+                    code: 200,
+                    message: CodeMsg['200']
+                });
+            }
         }
-    });
-
-    res.json({
-        code: 200,
-        message: CodeMsg['200']
-    });
+    );
 };
 
 exports.get_user = function (req, res) {
@@ -48,9 +48,10 @@ exports.get_user = function (req, res) {
                 });
             } else {
                 if (user) {
+                    console.log(user);
                     return res.json({
                         code: 200,
-                        message: CodeMsg['200']
+                        message: user.username
                     });
                 } else {
                     return res.json({

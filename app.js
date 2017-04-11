@@ -4,7 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var upload = require('multer')();
 var mongoose = require('mongoose');
+var cors = require('cors');
 
 var index = require('./routes/index');
 
@@ -19,8 +21,10 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(upload.single('image'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 // 连接mongodb
 mongoose.connect('mongodb://127.0.0.1/dear-stitp');
