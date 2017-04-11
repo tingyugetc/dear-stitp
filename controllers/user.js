@@ -9,6 +9,8 @@ const User = require('../models/user').User;
 exports.create_user = function (req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
+    // todo 密码需要加密
+    // todo 撒盐加密
     console.log(username, password);
 
     User.create({
@@ -72,5 +74,12 @@ exports.get_user = function (req, res) {
     // res.json({
     //     message: 'success'
     // });
+};
+
+exports.login = function (req, res, next) {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    // todo 密码加密，撒盐加密
 };
 
