@@ -21,19 +21,21 @@ exports.create_user = function (req, res, next) {
                 console.log(err);
                 return res.json({
                     code: err.code,
-                    message: CodeMsg[err.code] || CodeMsg['500']
+                    message: CodeMsg[err.code] || CodeMsg['500'],
+                    data: ''
                 });
             } else {
                 return res.json({
                     code: 200,
-                    message: CodeMsg['200']
+                    message: CodeMsg['200'],
+                    data: ''
                 });
             }
         }
     );
 };
 
-exports.get_user = function (req, res) {
+exports.login = function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
 
@@ -46,19 +48,22 @@ exports.get_user = function (req, res) {
             if (err) {
                 return res.json({
                     code: err.code,
-                    message: CodeMsg[err.code] || CodeMsg['500']
+                    message: CodeMsg[err.code] || CodeMsg['500'],
+                    data: ''
                 });
             } else {
                 if (user) {
                     console.log(user);
                     return res.json({
                         code: 200,
-                        message: user.username
+                        message: CodeMsg['200'],
+                        data: user.username
                     });
                 } else {
                     return res.json({
                         code: 404,
-                        message: CodeMsg['404']
+                        message: CodeMsg['404'],
+                        data: ''
                     });
                 }
             }
@@ -74,12 +79,5 @@ exports.get_user = function (req, res) {
     // res.json({
     //     message: 'success'
     // });
-};
-
-exports.login = function (req, res, next) {
-    var username = req.body.username;
-    var password = req.body.password;
-
-    // todo 密码加密，撒盐加密
 };
 
