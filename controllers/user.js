@@ -5,10 +5,15 @@
 const CodeMsg = require('../utils/code').code;
 const User = require('../models/user').User;
 
+var crypto = require('crypto');
+const hash = crypto.createHash('sha1');
+
 
 exports.create_user = function (req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
+    hash.update(password);
+    password = hash.digest('hex');
     // todo 密码需要加密
     // todo 撒盐加密
     console.log(username, password);
@@ -38,6 +43,8 @@ exports.create_user = function (req, res, next) {
 exports.login = function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
+    hash.update(password);
+    password = hash.digest('hex');
 
     User.findOne(
         {
