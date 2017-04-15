@@ -4,52 +4,50 @@
 
 const CodeMsg = require('../utils/code').code;
 const User = require('../models/user').User;
-
-var crypto = require('crypto');
-const hash = crypto.createHash('sha1');
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 exports.create_user = function (req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-    hash.update(password);
-    password = hash.digest('hex');
     // todo 密码需要加密
     // todo 撒盐加密
     console.log(username, password);
 
-    User.create({
-            username: username,
-            password: password
-        }, function (err) {
-            if (err) {
-                console.log(err);
-                return res.json({
-                    code: err.code,
-                    message: CodeMsg[err.code] || CodeMsg['500'],
-                    data: ''
-                });
-            } else {
-                return res.json({
-                    code: 200,
-                    message: CodeMsg['200'],
-                    data: ''
-                });
+    bcrypt.hash(password, saltRounds, function (err, hash) {
+        console.log(hash);
+        User.create({
+                username: username,
+                password: hash
+            }, function (err) {
+                if (err) {
+                    console.log(err);
+                    return res.json({
+                        code: err.code,
+                        message: CodeMsg[err.code] || CodeMsg['500'],
+                        data: ''
+                    });
+                } else {
+                    return res.json({
+                        code: 200,
+                        message: CodeMsg['200'],
+                        data: ''
+                    });
+                }
             }
-        }
-    );
+        );
+    });
+
 };
 
 exports.login = function (req, res) {
     var username = req.body.username;
     var password = req.body.password;
-    hash.update(password);
-    password = hash.digest('hex');
+
 
     User.findOne(
         {
-            username: username,
-            password: password
+            username: username
         },
         function (err, user) {
             if (err) {
@@ -60,11 +58,14 @@ exports.login = function (req, res) {
                 });
             } else {
                 if (user) {
-                    console.log(user);
-                    return res.json({
-                        code: 200,
-                        message: CodeMsg['200'],
-                        data: user.username
+                    bcrypt.compare(password, user.password, function (err, res) {
+                        if (res === true) {
+                            return res.json({
+                                code: 200,
+                                message: CodeMsg['200'],
+                                data: user.username
+                            });
+                        }
                     });
                 } else {
                     return res.json({
