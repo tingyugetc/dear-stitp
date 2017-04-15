@@ -11,7 +11,6 @@ exports.create_user = function (req, res, next) {
     var password = req.body.password;
     console.log(username, password);
 
-kjfdsfjkdsjk
     User.create({
             username: username,
             password: password
@@ -74,4 +73,13 @@ exports.get_user = function (req, res) {
     //     message: 'success'
     // });
 };
+
+
+
+
+
+
+
+
+
 
