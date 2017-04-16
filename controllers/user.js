@@ -1,5 +1,6 @@
 /**
  * Created by tingyugetc on 17/4/10.
+ * 用户控制器
  */
 
 const CodeMsg = require('../utils/code').code;
