@@ -10,9 +10,6 @@ const saltRounds = 10;
 exports.create_user = function (req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-    // todo 密码需要加密
-    // todo 撒盐加密
-    console.log(username, password);
 
     bcrypt.hash(password, saltRounds, function (err, hash) {
         console.log(hash);
@@ -21,7 +18,6 @@ exports.create_user = function (req, res, next) {
                 password: hash
             }, function (err) {
                 if (err) {
-                    console.log(err);
                     return res.json({
                         code: err.code,
                         message: CodeMsg[err.code] || CodeMsg['500'],
