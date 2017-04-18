@@ -17,18 +17,18 @@ exports.create_user = function (req, res, next) {
         User.create({
                 username: username,
                 password: hash
-            }, function (err) {
+            }, function (err, user) {
                 if (err) {
                     res.json({
                         code: err.code,
                         message: CodeMsg[err.code] || CodeMsg['500'],
-                        data: ''
+                        data: err.message
                     });
                 } else {
                     res.json({
                         code: 200,
                         message: CodeMsg['200'],
-                        data: ''
+                        data: user._id
                     });
                 }
             }
@@ -50,7 +50,7 @@ exports.login = function (req, res, next) {
                 res.json({
                     code: err.code,
                     message: CodeMsg[err.code] || CodeMsg['500'],
-                    data: ''
+                    data: err.message
                 });
             } else {
                 if (user) {
@@ -65,7 +65,8 @@ exports.login = function (req, res, next) {
                         } else {
                             res.json({
                                 code: 10101,
-                                message: CodeMsg['10101']
+                                message: CodeMsg['10101'],
+                                data: ''
                             });
                         }
                     });
