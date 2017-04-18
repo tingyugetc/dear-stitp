@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/newMeeting.css">
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap-datetimepicker.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <script type="text/javascript" src = "../js/vue.js"></script> -->
+
+	<script type="text/javascript" src="../jquery/jquery-1.8.3.min.js"></script>
+	<title>newMeeting</title>
+</head>
+<body>
+<div class = "first-div">
+	<form action="" method="post">
+		<div class="div_big">
+			<div class="form-group">
+				<div class="input-group col-md-3">
+
+					<label for="input_name" class="col-md-2">会议名称：</label>
+					<input class="form-control" size="12" type="text" value="" id = "input_name">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="input-group col-md-3">
+
+					<label for="input_address" class="col-md-1">会议地点：</label>
+					<input class="form-control" size="12" type="text" value="" id = "input_address">
+				</div>
+			</div>
+
+			<div class="form-group">
+
+				<label for="input_date" class="col-md-1">会议时间：</label>
+				<div class="input-group date form_datetime col-md-3" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy mm dd - HH:ii p">
+
+					<input class="form-control" size="12" type="text" value="" id  = "input_date" readonly>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+				</div>
+			</div>
+
+			<div>
+		    	
+				<div class="input-group col-md-3">
+					<label for="input_describe" class="col-md-1">会议描述：</label>
+					<!-- <input class="form-control" size="12" type="text" value="" id = "input_address"> -->
+					<textarea class="form-control" size="12" type="text" id = "input_describe"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div>
+
+			<button type="button" class="btn btn-primary btn-lg btn-block">创建会议</button>
+
+		</div>
+	</form>
+</div>
+<script type="text/javascript" src="../js/newMeeting.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.min.js"></script>
+<!-- <script type="text/javascript" src="../js/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script> -->
+<script type="text/javascript" src="../bootstrap/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../bootstrap/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript">
+	
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+</script>
+</body>
+</html>
