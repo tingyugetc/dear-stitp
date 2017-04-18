@@ -7,6 +7,7 @@ const Meeting = require('../models/metting').Meeting;
 const CodeMsg = require('../utils/code').code;
 
 exports.create = function (req, res, next) {
+    // todo 上传会议文件
     var name = req.body.name;
     var start_time = req.body.start_time;
     var location = req.body.location;
