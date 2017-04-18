@@ -17,7 +17,7 @@ const MeetingSchema = new Schema({
         default: '',
         require: true
     },
-    time: {
+    start_time: {
         type: Date,
         default: Date.now(),
         require: true

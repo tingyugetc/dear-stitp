@@ -4,5 +4,12 @@
  */
 
 exports.create = function (req, res, next) {
-    console.log('create meeting');
+    var name = req.body.name;
+    var start_time = req.body.start_time;
+    var location = req.body.location;
+
+    console.log(req.session);
+    res.json({
+        status: 'ok'
+    })
 };
