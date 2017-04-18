@@ -19,13 +19,13 @@ exports.create_user = function (req, res, next) {
                 password: hash
             }, function (err) {
                 if (err) {
-                    return res.json({
+                    res.json({
                         code: err.code,
                         message: CodeMsg[err.code] || CodeMsg['500'],
                         data: ''
                     });
                 } else {
-                    return res.json({
+                    res.json({
                         code: 200,
                         message: CodeMsg['200'],
                         data: ''
@@ -37,10 +37,9 @@ exports.create_user = function (req, res, next) {
 
 };
 
-exports.login = function (req, res) {
+exports.login = function (req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-
 
     User.findOne(
         {
@@ -48,24 +47,30 @@ exports.login = function (req, res) {
         },
         function (err, user) {
             if (err) {
-                return res.json({
+                res.json({
                     code: err.code,
                     message: CodeMsg[err.code] || CodeMsg['500'],
                     data: ''
                 });
             } else {
                 if (user) {
-                    bcrypt.compare(password, user.password, function (err, res) {
-                        if (res === true) {
-                            return res.json({
+                    bcrypt.compare(password, user.password, function (err, result) {
+                        if (result === true) {
+                            req.session.user = user.toObject();
+                            res.json({
                                 code: 200,
                                 message: CodeMsg['200'],
                                 data: user.username
                             });
+                        } else {
+                            res.json({
+                                code: 10101,
+                                message: CodeMsg['10101']
+                            });
                         }
                     });
                 } else {
-                    return res.json({
+                    res.json({
                         code: 404,
                         message: CodeMsg['404'],
                         data: ''
