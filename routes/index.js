@@ -13,5 +13,6 @@ router.post('/user/create_user', user.create_user);
 router.post('/user/login', user.login);
 
 router.post('/meeting/create', meeting.create);
+router.get('/meeting/getList', meeting.getList);
 
 module.exports = router;

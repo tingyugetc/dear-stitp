@@ -34,3 +34,19 @@ exports.create = function (req, res, next) {
         }
     });
 };
+
+exports.getList = function (req, res, next) {
+    Meeting.find(
+        null, null, {
+            limit: 20,
+            sort: '-start_time'
+        }, function (err, meetings) {
+            console.log(meetings);
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: meetings
+            });
+        }
+    );
+};
