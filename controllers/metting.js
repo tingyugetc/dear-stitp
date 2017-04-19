@@ -50,3 +50,11 @@ exports.getList = function (req, res, next) {
         }
     );
 };
+
+exports.getStartedList = function (req, res, next) {
+
+};
+
+exports.getJoinedList = function (req, res, next) {
+
+};

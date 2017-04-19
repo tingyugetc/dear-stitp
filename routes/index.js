@@ -14,5 +14,7 @@ router.post('/user/login', user.login);
 
 router.post('/meeting/create', meeting.create);
 router.get('/meeting/getList', meeting.getList);
+router.get('/meeting/getStartedList', meeting.getStartedList);
+router.get('/meeting/getJoinedList', meeting.getJoinedList);
 
 module.exports = router;
