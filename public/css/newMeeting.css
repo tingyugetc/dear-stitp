@@ -1,0 +1,34 @@
+/*newMeeting.css*/
+body {
+
+	text-align: center;
+
+}
+
+
+.first-div {
+	
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /*background-color: #efefef;*/
+  width:50%;
+  height: 50%;
+
+  -webkit-transform: translateX(-50%) translateY(-50%);
+}
+/*
+.div_big {
+	margin-top: 20%;
+	width: 60%;
+	height: 70%;
+}*/
+
+div {
+
+	margin: 0 auto;
+}
+
+button {
+	margin-top: 10%;
+}

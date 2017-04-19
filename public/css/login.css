@@ -1,0 +1,54 @@
+/*login.css*/
+
+.first-div {
+	
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /*background-color: #efefef;*/
+  width:50%;
+  height: 50%;
+
+  -webkit-transform: translateX(-50%) translateY(-50%);
+}
+
+body {
+	text-align:center;
+
+}
+
+h3 {
+	margin-top: 50px;
+	height: 50px;
+}
+
+form {
+}
+
+#div-big {
+/*	width: 100%;
+	height: 50%;
+	margin: auto auto;
+*/
+
+}
+
+#input-name{
+
+
+}
+
+/*#login_btn {
+
+	padding: 7px 60px;
+}*/
+
+.btn_div {
+
+	margin-top: 5%;
+}
+
+.input_div {
+
+	margin-top: 5%;
+}
