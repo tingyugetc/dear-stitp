@@ -87,5 +87,19 @@ exports.findJoinedList = function (req, res, next) {
 };
 
 exports.getMeeting = function (req, res, next) {
+    var meetingId = req.query._id;
+
+    Meeting.findOne({
+        _id: meetingId
+    }, function (err, meeting) {
+        res.json({
+            code: 200,
+            message: CodeMsg['200'],
+            data: meeting
+        });
+    });
+};
+
+exports.joinMeeting = function (req, res, next) {
 
 };
