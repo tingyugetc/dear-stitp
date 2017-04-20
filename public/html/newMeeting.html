@@ -18,7 +18,7 @@
 			<div class="form-group">
 				<div class="input-group col-md-3">
 
-					<label for="input_name" class="col-md-2">会议名称：</label>
+					<label for="input_name" class="col-md-1">* 会议名称：</label>
 					<input class="form-control" size="12" type="text" value="" id = "input_name">
 				</div>
 			</div>
@@ -26,14 +26,14 @@
 			<div class="form-group">
 				<div class="input-group col-md-3">
 
-					<label for="input_address" class="col-md-1">会议地点：</label>
+					<label for="input_address" class="col-md-1">* 会议地点：</label>
 					<input class="form-control" size="12" type="text" value="" id = "input_address">
 				</div>
 			</div>
 
 			<div class="form-group">
 
-				<label for="input_date" class="col-md-1">会议时间：</label>
+				<label for="input_date" class="col-md-1">* 会议时间：</label>
 				<div class="input-group date form_datetime col-md-3" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy mm dd - HH:ii p">
 
 					<input class="form-control" size="12" type="text" value="" id  = "input_date" readonly>
@@ -53,8 +53,12 @@
 
 		<div>
 
-			<button type="button" class="btn btn-primary btn-lg btn-block">创建会议</button>
+			<button type="button" class="btn btn-primary btn-lg btn-block" id = "login_btn">创建会议</button>
 
+		</div>
+
+		<div id="div_span">
+			<!-- <span></span> -->
 		</div>
 	</form>
 </div>
