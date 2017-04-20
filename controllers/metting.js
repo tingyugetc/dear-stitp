@@ -51,10 +51,37 @@ exports.getList = function (req, res, next) {
     );
 };
 
+// 获取我发起的会议列表
 exports.getStartedList = function (req, res, next) {
+    var user = req.session.user;
 
+    Meeting.find({
+        user: user
+    }, null, {
+        limit: 20,
+        sort: '-start_time'
+    }, function (err, meetings) {
+        res.json({
+            code: 200,
+            message: CodeMsg['200'],
+            date: meetings
+        });
+    });
 };
 
 exports.getJoinedList = function (req, res, next) {
+    var user = req.session.user;
 
+    Meeting.find({
+        user: user
+    }, null, {
+        limit: 20,
+        sort: '-start_time'
+    }, function (err, meetings) {
+        res.json({
+            code: 200,
+            message: CodeMsg['200'],
+            data: meetings
+        });
+    });
 };
