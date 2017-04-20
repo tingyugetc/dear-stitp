@@ -4,19 +4,41 @@
 function getDate() {
 	// body...
 
-	var name = (function() {
-		name = document.getElementsByName("name")[0].value;
-		return name;
-	}());
+	var name = document.getElementsByName("name")[0].value;
 
-	var psword = (function() {
-		psword = document.getElementsByName("psword")[0].value;
-		return psword;
-	}());
+	var psword = document.getElementsByName("psword")[0].value;
 
-	var variable=new XMLHttpRequest();
-	variable.open("POST","demo_post.asp",true);
-	variable.send();
+	var obj = {
+		name: name,
+		psword: psword
+	};
+
+	var userDate = JSON.stringify(obj);
+
+	var request = new XMLHttpRequest();
+	var Iftimeout = false;
+	var timeCount = 1000;
+	var timer = setTimeout(function() {
+		Iftimeout = true;
+		request.abort();
+	},
+	timeCount);
+
+	var url = "meeting/create";
+	request.open("POST", url);
+	request.onreadystatechange = function() {
+		// callback
+		if (request.readyState !== 4) return false;
+		if (Iftimeout) return false;
+		clearTimeout(timer);
+		if (request.status !== 200) {
+
+				//alert("创建成功~");
+			return false;
+		}
+	};
+	request.setRequestHeader("Content-Type", "application/json");
+	request.send(userDate);
 
 
 	// console.log(name);
@@ -26,4 +48,7 @@ function getDate() {
 }
 
 
-document.getElementById("login_btn").addEventListener("click", getDate);
+	document.getElementById("login_btn").onclick = function(){
+		getDate();
+		window.location.href='newMeeting.html';
+	}

@@ -35,7 +35,6 @@
 		},
 		timeCount);
 
-
 		var url = "meeting/create";
 		request.open("POST", url);
 		request.onreadystatechange = function() {
