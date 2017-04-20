@@ -13,8 +13,8 @@ router.post('/user/create_user', user.create_user);
 router.post('/user/login', user.login);
 
 router.post('/meeting/create', meeting.create);
-router.get('/meeting/getList', meeting.getList);
-router.get('/meeting/getStartedList', meeting.getStartedList);
-router.get('/meeting/getJoinedList', meeting.getJoinedList);
+router.get('/meeting/findList', meeting.findList);
+router.get('/meeting/findStartedList', meeting.findStartedList);
+router.get('/meeting/findJoinedList', meeting.findJoinedList);
 
 module.exports = router;

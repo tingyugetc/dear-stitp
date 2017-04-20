@@ -35,7 +35,7 @@ exports.create = function (req, res, next) {
     });
 };
 
-exports.getList = function (req, res, next) {
+exports.findList = function (req, res, next) {
     Meeting.find(
         null, null, {
             limit: 20,
@@ -52,7 +52,7 @@ exports.getList = function (req, res, next) {
 };
 
 // 获取我发起的会议列表
-exports.getStartedList = function (req, res, next) {
+exports.findStartedList = function (req, res, next) {
     var user = req.session.user;
 
     Meeting.find({
@@ -69,7 +69,7 @@ exports.getStartedList = function (req, res, next) {
     });
 };
 
-exports.getJoinedList = function (req, res, next) {
+exports.findJoinedList = function (req, res, next) {
     var user = req.session.user;
 
     Meeting.find({
@@ -84,4 +84,8 @@ exports.getJoinedList = function (req, res, next) {
             data: meetings
         });
     });
+};
+
+exports.getMeeting = function (req, res, next) {
+
 };
