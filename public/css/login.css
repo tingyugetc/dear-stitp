@@ -2,14 +2,14 @@
 
 .first-div {
 	
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  /*background-color: #efefef;*/
-  width:50%;
-  height: 50%;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/*background-color: #efefef;*/
+	width:50%;
+	height: 50%;
 
-  -webkit-transform: translateX(-50%) translateY(-50%);
+	-webkit-transform: translateX(-50%) translateY(-50%);
 }
 
 body {
