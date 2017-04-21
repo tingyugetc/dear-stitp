@@ -32,7 +32,7 @@ function getDate() {
 		if (Iftimeout) return false;
 		clearTimeout(timer);
 		if (request.status !== 200) {
-
+			// request.response 
 				//alert("创建成功~");
 			return false;
 		}
