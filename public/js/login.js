@@ -1,54 +1,40 @@
 // login.js
 
+const BASE_SITE = 'http://127.0.0.1:3000';
 
 function getDate() {
-	// body...
+	var name = document.getElementById('name').value;
+	var password = document.getElementById('password').value;
 
-	var name = document.getElementsByName("name")[0].value;
+	// POST请求
+	var req = new XMLHttpRequest();
+	// OPEN
+	req.open('POST', BASE_SITE + '/user/login');
+	// 设置请求头部信息
+	req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	// 指定服务端返回的数据类型
+	req.responseType = 'json';
+	// 发起请求
+	req.send('username=' + name + '&password=' + password);
 
-	var psword = document.getElementsByName("psword")[0].value;
-
-	var obj = {
-		name: name,
-		psword: psword
-	};
-
-	var userDate = JSON.stringify(obj);
-
-	var request = new XMLHttpRequest();
-	var Iftimeout = false;
-	var timeCount = 1000;
-	var timer = setTimeout(function() {
-		Iftimeout = true;
-		request.abort();
-	},
-	timeCount);
-
-	var url = "meeting/create";
-	request.open("POST", url);
-	request.onreadystatechange = function() {
-		// callback
-		if (request.readyState !== 4) return false;
-		if (Iftimeout) return false;
-		clearTimeout(timer);
-		if (request.status !== 200) {
-			// request.response 
-				//alert("创建成功~");
-			return false;
-		}
-	};
-	request.setRequestHeader("Content-Type", "application/json");
-	request.send(userDate);
-
-
-	// console.log(name);
-
-	// console.log(psword);
+	// 添加监听事件
+	req.onload = function (e) {
+		if (this.status === 200) {
+			// 获取服务端返回的数据
+			console.log(this.response);
+			if (this.response.code === 200) {
+                window.location.href='newMeeting.html';
+            } else {
+				alert(this.response.message);
+			}
+        }else {
+            alert('网络错误');
+        }
+    }
 
 }
 
 
-	document.getElementById("login_btn").onclick = function(){
+	document.getElementById("login_btn").onclick = function () {
 		getDate();
-		window.location.href='newMeeting.html';
-	}
+	};
