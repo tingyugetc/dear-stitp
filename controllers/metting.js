@@ -34,3 +34,72 @@ exports.create = function (req, res, next) {
         }
     });
 };
+
+exports.findList = function (req, res, next) {
+    Meeting.find(
+        null, null, {
+            limit: 20,
+            sort: '-start_time'
+        }, function (err, meetings) {
+            console.log(meetings);
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: meetings
+            });
+        }
+    );
+};
+
+// 获取我发起的会议列表
+exports.findStartedList = function (req, res, next) {
+    var user = req.session.user;
+
+    Meeting.find({
+        user: user
+    }, null, {
+        limit: 20,
+        sort: '-start_time'
+    }, function (err, meetings) {
+        res.json({
+            code: 200,
+            message: CodeMsg['200'],
+            date: meetings
+        });
+    });
+};
+
+exports.findJoinedList = function (req, res, next) {
+    var user = req.session.user;
+
+    Meeting.find({
+        user: user
+    }, null, {
+        limit: 20,
+        sort: '-start_time'
+    }, function (err, meetings) {
+        res.json({
+            code: 200,
+            message: CodeMsg['200'],
+            data: meetings
+        });
+    });
+};
+
+exports.getMeeting = function (req, res, next) {
+    var meetingId = req.query._id;
+
+    Meeting.findOne({
+        _id: meetingId
+    }, function (err, meeting) {
+        res.json({
+            code: 200,
+            message: CodeMsg['200'],
+            data: meeting
+        });
+    });
+};
+
+exports.joinMeeting = function (req, res, next) {
+
+};
