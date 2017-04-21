@@ -4,13 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var upload = require('multer')();
+var upload = require('multer');
 var mongoose = require('mongoose');
 var cors = require('cors');
+var session = require('express-session');
+var mongoStore = require('connect-mongo')(session);
 
 var index = require('./routes/index');
 
 var app = express();
+
+
+// 连接mongodb
+mongoose.connect('mongodb://127.0.0.1/dear-stitp');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, '链接错误'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,15 +29,20 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(upload.single('image'));
+app.use(upload().array());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
-// 连接mongodb
-mongoose.connect('mongodb://127.0.0.1/dear-stitp');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, '链接错误'));
+app.use(session({
+    secret: 'dear-stitp',
+    store: new mongoStore({
+        url: 'mongodb://127.0.0.1/dear-stitp',
+        collection: 'session'
+    }),
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.use('/', index);
 
