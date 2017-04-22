@@ -1,4 +1,7 @@
 // newMeeting.js
+	
+	
+	const BASE_SITE = 'http://127.0.0.1:3000';
 
 	function getDate() {
 		// body...
@@ -18,7 +21,9 @@
 
 		if (name.value == "" || address.value == "" || date.value == "") {
 			//var id = "div_span";
-			AddSpan();
+			var id = "div_span";
+			var text = "带‘*’的部分为必填";
+			AddSpan(id, text);
 			return false;
 		}
 
@@ -35,32 +40,47 @@
 		},
 		timeCount);
 
-		var url = "meeting/create";
+		var url = BASE_SITE + "meeting/create";
 		request.open("POST", url);
-		request.onreadystatechange = function() {
-			// callback
-			if (request.readyState !== 4) return false;
-			if (Iftimeout) return false;
-			clearTimeout(timer);
-			if (request.status !== 200) {
-
-				//alert("创建成功~");
-				return false;
-			}
-		};
+		req.responseType = 'json';
 		request.setRequestHeader("Content-Type", "application/json");
 		request.send(dateStr);
 
+		// request.onreadystatechange = function() {
+		// 	// callback
+
+		// };
+		request.onload = function() {
+			if (this.readyState !== 4) return false;
+			if (Iftimeout) {
+				id = "div_span";
+				text = "请求超时"
+				AddSpan(id, text);
+				return false;
+			}
+			clearTimeout(timer);
+			if (this.status === 200) {
+				if (this.response.code === 200) {
+					window.location.href='index.html';
+				}
+				else {
+					AddSpan("div_span", this.response.message);
+					return false;
+				}
+			}
+			else
+				AddSpan("div_span", "网络错误");
+		}
 		return true;
 	}
 
 
-	function AddSpan() {
+	function AddSpan(id, text) {
 
 		removeAllChild();
 		// console.log(arr);
 		var span = document.createElement("span");
-		var node = document.createTextNode("带‘*’的部分为必填");
+		var node = document.createTextNode(text);
 		span.appendChild(node);
 		var element = document.getElementById("div_span");
 		element.appendChild(span);
@@ -78,10 +98,10 @@
 		}  
 	}
 
+
 	document.getElementById("login_btn").onclick = function(){
 		var a = getDate();
 		if(a){
-			window.location.href='index.html';
 			return true;
 		}
 		else

@@ -25,14 +25,39 @@ function getDate() {
 			if (this.response.code === 200) {
                 window.location.href='newMeeting.html';
             } else {
-				alert(this.response.message);
+				// alert(this.response.message);
+				AddSpan("div_span", this.response.message);
 			}
         }else {
-            alert('网络错误');
+            // alert('网络错误');
+            AddSpan("div_span", "网络错误");
         }
     }
 
 }
+
+    function AddSpan(id, text) {
+
+        removeAllChild();
+        // console.log(arr);
+        var span = document.createElement("span");
+        var node = document.createTextNode(text);
+        span.appendChild(node);
+        var element = document.getElementById("div_span");
+        element.appendChild(span);
+
+    }
+
+
+    function removeAllChild() {  
+
+        var div = document.getElementById("div_span");
+        //console.log(div);
+        //if(div.hasChildNodes())
+        while (div.hasChildNodes()) { //当div下还存在子节点时 循环继续  
+            div.removeChild(div.firstChild);   
+        }  
+    }
 
 
 document.getElementById("login_btn").onclick = function () {

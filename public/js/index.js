@@ -1,5 +1,8 @@
 // index.js
 
+
+const BASE_SITE = 'http://127.0.0.1:3000';
+
 function getJson() {
 	// body...
 	var obj = {
@@ -9,20 +12,40 @@ function getJson() {
 		meetingDate: "2014-09-08"
 	};
 
+
 	var objJson = JSON.stringify(obj);
 	var meeting = document.getElementsByTagName("table");
 	var recentMeeting = meeting[0];
+	console.log(recentMeeting);
+
 	// var myMeeting = document.getElementBysByTagName("my_meeting");
 	// var joinMeeting = document.getElementById("join_meeting");
+	var request = new XMLHttpRequest();
+	request.open("post", BASE_SITE + "/meeting/findList");
+	req.setRequestHeader('Content-type', 'application/json');
+	// 指定服务端返回的数据类型
+	req.responseType = 'json';
+	request.send(null);
+
+	//判断是否成功
+	// request.onload(){
+	// 	this.response.date
+	// }
+	for(key in request.response.data){
+
+	}
+
 	var id = "recent_meeting"
 	createTd(obj, recentMeeting, id);
 }
 
-function createTd(obj, meeting, id) {
+function createTd(obj, Meeting, id) {
 	// body...
 	var tr = document.createElement("tr");
 	tr.setAttribute("id",id);
-	meeting.appenChild(tr);
+	fMeeting = Meeting.firstChild;
+	console.log(fMeeting);
+	Meeting.appendChild(tr);
 
 	for(var key in obj){
 		console.log(obj[key]);
@@ -37,4 +60,4 @@ function createTd(obj, meeting, id) {
 
 (function(){
 	getJson();
-});
+}());
