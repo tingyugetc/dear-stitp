@@ -35,6 +35,6 @@ function getDate() {
 }
 
 
-	document.getElementById("login_btn").onclick = function () {
-		getDate();
-	};
+document.getElementById("login_btn").onclick = function () {
+	getDate();
+};
