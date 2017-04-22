@@ -100,6 +100,7 @@ exports.getMeeting = function (req, res, next) {
     });
 };
 
+// 参加会议
 exports.joinMeeting = function (req, res, next) {
 
 };
