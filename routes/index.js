@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 router.post('/user/create_user', user.create_user);
 router.post('/user/login', user.login);
 
-router.post('/meeting/create', authorization.requireLogin, meeting.create);
+router.post('/meeting/create', meeting.create);
 router.get('/meeting/findList', meeting.findList);
 router.get('/meeting/findStartedList', authorization.requireLogin, meeting.findStartedList);
 router.get('/meeting/findJoinedList', authorization.requireLogin, meeting.findJoinedList);

@@ -56,7 +56,7 @@ exports.login = function (req, res, next) {
                 if (user) {
                     bcrypt.compare(password, user.password, function (err, result) {
                         if (result === true) {
-                            req.session.user = user.toObject();
+                            req.session.user = user;
                             res.json({
                                 code: 200,
                                 message: CodeMsg['200'],

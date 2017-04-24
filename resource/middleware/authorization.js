@@ -6,7 +6,7 @@ const CodeMsg = require('../../utils/code').code;
 
 exports.requireLogin = function (req, res, next) {
     if (req.session.user) {
-        next();
+        return next();
     } else {
         res.json({
             code: 10102,
