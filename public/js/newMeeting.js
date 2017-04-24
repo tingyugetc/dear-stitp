@@ -1,25 +1,22 @@
 // newMeeting.js
 	
 	
-	const BASE_SITE = 'http://127.0.0.1:3000';
+	const BASE_SITE = 'http://127.0.0.1:3000/';
 
 	function getDate() {
-		// body...
 		var name = document.getElementById("input_name");
 		var address = document.getElementById("input_address");
-		var date = document.getElementById("input_date");
+		var start_time = document.getElementById("input_date");
 		var describe = document.getElementById("input_describe");
 
 		var obj = {
 			name: name.value,
-			address: address.value,
-			date: date.value,
-			describe: describe.value
+			location: address.value,
+			start_time: start_time.value
+			// describe: describe.value
 		};
 
-
-
-		if (name.value == "" || address.value == "" || date.value == "") {
+		if (name.value === "" || address.value === "" || start_time.value === "") {
 			//var id = "div_span";
 			var id = "div_span";
 			var text = "带‘*’的部分为必填";
@@ -42,19 +39,15 @@
 
 		var url = BASE_SITE + "meeting/create";
 		request.open("POST", url);
-		req.responseType = 'json';
-		request.setRequestHeader("Content-Type", "application/json");
-		request.send(dateStr);
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.responseType = 'json';
+		request.send('data='+dateStr);
 
-		// request.onreadystatechange = function() {
-		// 	// callback
-
-		// };
 		request.onload = function() {
 			if (this.readyState !== 4) return false;
 			if (Iftimeout) {
 				id = "div_span";
-				text = "请求超时"
+				text = "请求超时";
 				AddSpan(id, text);
 				return false;
 			}
@@ -70,8 +63,7 @@
 			}
 			else
 				AddSpan("div_span", "网络错误");
-		}
-		return true;
+		};
 	}
 
 
@@ -100,10 +92,5 @@
 
 
 	document.getElementById("login_btn").onclick = function(){
-		var a = getDate();
-		if(a){
-			return true;
-		}
-		else
-			return false;
-	}
+		getDate();
+	};

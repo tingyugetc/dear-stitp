@@ -8,14 +8,16 @@ const CodeMsg = require('../utils/code').code;
 
 exports.create = function (req, res, next) {
     // todo 上传会议文件
-    var name = req.body.name;
-    var start_time = req.body.start_time;
-    var location = req.body.location;
+    var data = JSON.parse(req.body.data);
+
+    var name = data.name;
+    var start_time = data.start_time;
+    var location = data.location;
     var user = req.session.user;
 
     Meeting.create({
         name: name,
-        start_time: start_time,
+        // start_time: start_time,
         location: location,
         user: user
     }, function (err, meeting) {
