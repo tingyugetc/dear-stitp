@@ -17,7 +17,7 @@ exports.create = function (req, res, next) {
 
     Meeting.create({
         name: name,
-        // start_time: start_time,
+        start_time: start_time,
         location: location,
         user: user
     }, function (err, meeting) {
