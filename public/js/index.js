@@ -32,7 +32,7 @@ function getJson() {
 	// 	this.response.date
 	// }
 	for(key in request.response.data){
-
+		
 	}
 
 	var id = "recent_meeting"

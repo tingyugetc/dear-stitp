@@ -40,9 +40,9 @@
 		},
 		timeCount);
 
-		var url = BASE_SITE + "meeting/create";
+		var url = BASE_SITE + "/meeting/create";
 		request.open("POST", url);
-		req.responseType = 'json';
+		request.responseType = 'json';
 		request.setRequestHeader("Content-Type", "application/json");
 		request.send(dateStr);
 
