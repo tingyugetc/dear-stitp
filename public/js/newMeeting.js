@@ -1,19 +1,20 @@
 // newMeeting.js
 	
 	
-	const BASE_SITE = 'http://127.0.0.1:3000/';
+	const BASE_SITE = 'http://127.0.0.1:3000';
 
 	function getDate() {
 		var name = document.getElementById("input_name");
 		var address = document.getElementById("input_address");
 		var start_time = document.getElementById("input_date");
-		var describe = document.getElementById("input_describe");
+		var meetingFile = document.getElementById("input_file");
+		// var describe = document.getElementById("input_describe");
 
 		var obj = {
 			name: name.value,
 			location: address.value,
 			start_time: start_time.value
-			// describe: describe.value
+			meeting_file: input_file;
 		};
 
 		if (name.value === "" || address.value === "" || start_time.value === "") {
@@ -23,9 +24,15 @@
 			AddSpan(id, text);
 			return false;
 		}
+		var form = document.getElementById("form_data");
+		var formData = new FormData(form);
+		formData.append("meetingName", obj.name);
+		formData.append("meetinglocation", obj.address);
+		formData.append("start_time", obj.start_time);
+		formData.append("meetingFile", obj.input_file);
 
-		var dateStr = JSON.stringify(obj);
-		console.log(dateStr);
+		// var dateStr = JSON.stringify(obj);
+		// console.log(dateStr);
 
 		var request = new XMLHttpRequest();
 
@@ -39,15 +46,15 @@
 
 		var url = BASE_SITE + "/meeting/create";
 		request.open("POST", url);
-<<<<<<< HEAD
-		request.responseType = 'json';
-		request.setRequestHeader("Content-Type", "application/json");
-		request.send(dateStr);
-=======
+// <<<<<<< HEAD
+		// request.responseType = 'json';
+		// request.setRequestHeader("Content-Type", "application/json");
+		// request.send(dateStr);
+// =======
         request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         request.responseType = 'json';
-		request.send('data='+dateStr);
->>>>>>> origin/feature/chichi
+		request.send('data='+formData);
+// >>>>>>> origin/feature/chichi
 
 		request.onload = function() {
 			if (this.readyState !== 4) return false;

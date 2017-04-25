@@ -22,18 +22,18 @@ function getJson() {
 	// var joinMeeting = document.getElementById("join_meeting");
 	var request = new XMLHttpRequest();
 	request.open("post", BASE_SITE + "/meeting/findList");
-	req.setRequestHeader('Content-type', 'application/json');
+	request.setRequestHeader('Content-type', 'application/json');
 	// 指定服务端返回的数据类型
-	req.responseType = 'json';
+	request.responseType = 'json';
 	request.send(null);
 
 	//判断是否成功
 	// request.onload(){
 	// 	this.response.date
 	// }
-	for(key in request.response.data){
+	// for(key in request.response.data){
 		
-	}
+	// }
 
 	var id = "recent_meeting"
 	createTd(obj, recentMeeting, id);
