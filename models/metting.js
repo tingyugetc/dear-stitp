@@ -18,8 +18,8 @@ const MeetingSchema = new Schema({
         require: true
     },
     start_time: {
-        type: Date,
-        default: Date.now(),
+        type: String,
+        default: '',
         require: true
     },
     location: {

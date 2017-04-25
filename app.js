@@ -29,10 +29,12 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    uploadDir: './upload_tmp',
+    uploadDir: './uploads/',
     extended: false
 }));
-app.use(upload().array());
+app.use(upload({
+    dest: './uploads/'
+}).any());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
@@ -46,6 +48,8 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+app.use(express.static('public'));
 
 app.use('/', index);
 
