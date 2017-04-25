@@ -7,16 +7,7 @@
 		var name = document.getElementById("input_name");
 		var address = document.getElementById("input_address");
 		var start_time = document.getElementById("input_date");
-		var meetingFile = document.getElementById("input_file");
-		// var describe = document.getElementById("input_describe");
-
-		var obj = {
-			name: name.value,
-			location: address.value,
-			start_time: start_time.value
-			meeting_file: input_file;
-		};
-
+		
 		if (name.value === "" || address.value === "" || start_time.value === "") {
 			//var id = "div_span";
 			var id = "div_span";
@@ -26,10 +17,10 @@
 		}
 		var form = document.getElementById("form_data");
 		var formData = new FormData(form);
-		formData.append("meetingName", obj.name);
-		formData.append("meetinglocation", obj.address);
-		formData.append("start_time", obj.start_time);
-		formData.append("meetingFile", obj.input_file);
+		// formData.append("meetingName", obj.name);
+		// formData.append("meetinglocation", obj.address);
+		// formData.append("start_time", obj.start_time);
+		// formData.append("meeting_file", meeting_file[0]);
 
 		// var dateStr = JSON.stringify(obj);
 		// console.log(dateStr);
@@ -51,7 +42,7 @@
 		// request.setRequestHeader("Content-Type", "application/json");
 		// request.send(dateStr);
 // =======
-        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.setRequestHeader("Content-Type", "application/form-data");
         request.responseType = 'json';
 		request.send('data='+formData);
 // >>>>>>> origin/feature/chichi
@@ -75,7 +66,7 @@
 				}
 			}
 			else
-				AddSpan("div_span", "网络错误");
+				AddSpan("div_span", "网络错误500");
 		};
 	}
 
