@@ -1,1 +1,35 @@
 /*index.css*/
+
+
+
+.div_footer{
+	text-align: center;
+}
+
+ul {
+
+	width: 100%;
+}
+
+ul:first-child {
+	margin-left: 1%;
+}
+
+li {
+	width: 32%;
+	float: left;
+}
+
+.div_meet {
+	height: 30%;
+	/*margin-top: 3%;*/
+}
+
+hr {
+
+	/*color:#ffffff;*/
+
+	border:0;
+	background-color:#ffffff;
+	height:1px;
+}

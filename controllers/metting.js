@@ -5,19 +5,32 @@
 
 const Meeting = require('../models/metting').Meeting;
 const CodeMsg = require('../utils/code').code;
+const fs = require('fs');
 
 exports.create = function (req, res, next) {
-    // todo 上传会议文件
     var name = req.body.name;
     var start_time = req.body.start_time;
     var location = req.body.location;
     var user = req.session.user;
 
+    // 获取文件的临时路径
+    var tmp_path = req.files.meeting.path;
+    var target_path = './public/upload/' + req.files.meeting.name;
+
+    fs.rename(tmp_path, target_path, function (err) {
+        if (err) throw err;
+        fs.unlink(tmp_path, function (err) {
+            if (err) throw err;
+        })
+    });
+
+
     Meeting.create({
         name: name,
         start_time: start_time,
         location: location,
-        user: user
+        user: user,
+        file: target_path
     }, function (err, meeting) {
         if (err) {
             res.json({
