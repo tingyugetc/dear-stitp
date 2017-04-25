@@ -23,6 +23,7 @@
 			AddSpan(id, text);
 			return false;
 		}
+
 		var formData = new FormData();
 		formData.append("name", obj.name);
 		formData.append("location", obj.location);
