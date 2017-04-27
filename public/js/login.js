@@ -24,7 +24,7 @@ function getDate() {
 			// 获取服务端返回的数据
 			console.log(this.response);
 			if (this.response.code === 200) {
-                window.location.href='newMeeting.html';
+                window.location.href='index.html';
             } else {
 				// alert(this.response.message);
 				AddSpan("div_span", this.response.message);

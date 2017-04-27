@@ -34,12 +34,12 @@
 
 		var request = new XMLHttpRequest();
 		request.open("POST", url);
+		request.responseType = 'json';
 		request.send(formData);
 
 		request.onload = function() {
 			if (this.status === 200) {
 				console.log(this.response);
-				console.log(this.response.code === 200);
 				if (this.response.code === 200) {
 					window.location.href='index.html';
 				} else {
