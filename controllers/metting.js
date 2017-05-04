@@ -14,16 +14,12 @@ exports.create = function (req, res, next) {
     var user = req.session.user;
 
     // 获取文件的临时路径
-    var tmp_path = req.files.meeting.path;
-    var target_path = './public/upload/' + req.files.meeting.name;
+    var tmp_path = './' + req.files[0].path;
+    var target_path = './public/upload/' + req.files[0].originalname;
 
     fs.rename(tmp_path, target_path, function (err) {
         if (err) throw err;
-        fs.unlink(tmp_path, function (err) {
-            if (err) throw err;
-        })
     });
-
 
     Meeting.create({
         name: name,

@@ -10,7 +10,7 @@ function getJson() {
 	var url = ["/meeting/findList", "/meeting/findStartedList", "/meeting/findJoinedList"];
 	for (var i = 0; i < meeting.length; i++) {
 		//meeting[i]
-		var request = getDate(BASE_SITE + url[i]);
+		var request = getData(BASE_SITE + url[i]);
 		var id = "meeting" + i;
 		if (request.code === 200) {
 			createTd(request.data, meeting[i], id);
