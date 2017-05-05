@@ -13,19 +13,23 @@ exports.create = function (req, res, next) {
     var location = req.body.location;
     var user = req.session.user;
 
-    // 获取文件的临时路径
-    var tmp_path = './' + req.files[0].path;
-    var target_path = './public/upload/' + req.files[0].originalname;
+    if (req.files.length > 0) {
+        // 获取文件的临时路径
+        var tmp_path = './' + req.files[0].path;
+        var target_path = './public/upload/' + req.files[0].originalname;
 
-    fs.rename(tmp_path, target_path, function (err) {
-        if (err) throw err;
-    });
+        fs.rename(tmp_path, target_path, function (err) {
+            if (err) throw err;
+        });
+    } else {
+        target_path = '';
+    }
 
     Meeting.create({
         name: name,
         start_time: start_time,
         location: location,
-        user: user,
+        user: user._id,
         file: target_path
     }, function (err, meeting) {
         if (err) {
@@ -48,12 +52,10 @@ exports.findList = function (req, res, next) {
     Meeting.find(
         null, null, {
             limit: 20,
-            sort: '-start_time'
+            sort: '-start_time',
+            populate: 'user'
         }, function (err, meetings) {
             console.log(meetings);
-            meetings.forEach(function (element) {
-                element['username'] = element.user.username;
-            });
             res.json({
                 code: 200,
                 message: CodeMsg['200'],
