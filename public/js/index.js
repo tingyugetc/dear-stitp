@@ -1,6 +1,5 @@
 // index.js
 
-const BASE_SITE = 'http://127.0.0.1:3000';
 
 function getJson() {
 	// body...
@@ -9,7 +8,7 @@ function getJson() {
 	var url = ["/meeting/findList", "/meeting/findStartedList", "/meeting/findJoinedList"];
 
 	for (var i = 0; i < meeting.length; i++) {
-		getData(BASE_SITE + url[i], meeting[i]);
+		getData(url[i], meeting[i]);
 	}
 }
 

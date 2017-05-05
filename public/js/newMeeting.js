@@ -1,7 +1,4 @@
 // newMeeting.js
-	
-	
-	const BASE_SITE = 'http://127.0.0.1:3000';
 
 	function getDate() {
 		var name = document.getElementById("input_name");
@@ -30,7 +27,7 @@
 		formData.append("start_time", obj.start_time);
 		formData.append("meeting", obj.meeting_file);
 
-        var url = BASE_SITE + "/meeting/create";
+        var url = "/meeting/create";
 
 		var request = new XMLHttpRequest();
 		request.open("POST", url);

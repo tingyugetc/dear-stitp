@@ -1,6 +1,5 @@
 // login.js
 
-const BASE_SITE = 'http://127.0.0.1:3000';
 
 function getDate() {
 	var name = document.getElementById('name').value;
@@ -9,8 +8,8 @@ function getDate() {
 	// POST请求
 	var req = new XMLHttpRequest();
 	// OPEN
-	req.open('POST', BASE_SITE + '/user/login');
-    // req.open('POST', BASE_SITE + '/user/create_user');
+	req.open('POST', '/user/login');
+    // req.open('POST', '/user/create_user');
 	// 设置请求头部信息
 	req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	// 指定服务端返回的数据类型
