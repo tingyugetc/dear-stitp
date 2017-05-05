@@ -50,6 +50,11 @@ exports.findList = function (req, res, next) {
             limit: 20,
             sort: '-start_time'
         }, function (err, meetings) {
+	    meetings.forEach(function (element) {
+		console.log(element.user.username);
+                element['username'] = element.user.username;
+            	// return element;
+	    });
             console.log(meetings);
             res.json({
                 code: 200,
@@ -70,10 +75,13 @@ exports.findStartedList = function (req, res, next) {
         limit: 20,
         sort: '-start_time'
     }, function (err, meetings) {
+	    meetings.forEach(function (element) {
+                element['username'] = element.user.username;
+            });
         res.json({
             code: 200,
             message: CodeMsg['200'],
-            date: meetings
+            data: meetings
         });
     });
 };
@@ -87,6 +95,9 @@ exports.findJoinedList = function (req, res, next) {
         limit: 20,
         sort: '-start_time'
     }, function (err, meetings) {
+	    meetings.forEach(function (element) {
+                element['username'] = element.user.username;
+            });
         res.json({
             code: 200,
             message: CodeMsg['200'],

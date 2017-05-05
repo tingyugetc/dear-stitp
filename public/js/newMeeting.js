@@ -1,7 +1,7 @@
 // newMeeting.js
 	
 	
-	const BASE_SITE = 'http://127.0.0.1:3000';
+	const BASE_SITE = 'http://115.28.180.202:3000';
 
 	function getDate() {
 		var name = document.getElementById("input_name");
@@ -34,12 +34,12 @@
 
 		var request = new XMLHttpRequest();
 		request.open("POST", url);
+		request.responseType = 'json';
 		request.send(formData);
 
 		request.onload = function() {
 			if (this.status === 200) {
 				console.log(this.response);
-				console.log(this.response.code === 200);
 				if (this.response.code === 200) {
 					window.location.href='index.html';
 				} else {
