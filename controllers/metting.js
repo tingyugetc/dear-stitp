@@ -73,7 +73,8 @@ exports.findStartedList = function (req, res, next) {
         user: user
     }, null, {
         limit: 20,
-        sort: '-start_time'
+        sort: '-start_time',
+        populate: 'user'
     }, function (err, meetings) {
         meetings.forEach(function (element) {
             element['username'] = element.user.username;
@@ -93,7 +94,8 @@ exports.findJoinedList = function (req, res, next) {
         user: user
     }, null, {
         limit: 20,
-        sort: '-start_time'
+        sort: '-start_time',
+        populate: 'user'
     }, function (err, meetings) {
         meetings.forEach(function (element) {
             element['username'] = element.user.username;
