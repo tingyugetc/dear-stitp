@@ -1,6 +1,6 @@
 // login.js
 
-const BASE_SITE = 'http://127.0.0.1:3000';
+const BASE_SITE = 'http://115.28.180.202:3000';
 
 function getDate() {
 	var name = document.getElementById('name').value;
