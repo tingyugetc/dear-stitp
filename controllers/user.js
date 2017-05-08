@@ -5,6 +5,7 @@
 
 const CodeMsg = require('../utils/code').code;
 const User = require('../models/user').User;
+const UserInfo = require('../models/userPersonInfo').UserPersonInfo;
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -93,37 +94,35 @@ exports.login = function (req, res, next) {
 };
 
 exports.user_info = function (req, res, next) {
-    var user_id = req.body.user_id || 0;
+    var user_id = req.query.user_id || 0;
     console.log(user_id);
     if (user_id === 0) {
         // 查看自己的信息
-        res.json({
-            code: 200,
-            message: CodeMsg['200'],
-            data: req.session.user
-        })
+        UserInfo.find({
+            user: req.session.user
+        }, function (err, userInfo) {
+            if (userInfo) {
+                res.json({
+                    code: 200,
+                    message: CodeMsg['200'],
+                    data: userInfo
+                });
+            }
+        });
     } else {
         // 查看他人的信息
         User.find({
             _id: user_id
-        }, function (err, user) {
-            if (err) {
-                res.json({
-                    code: err.code,
-                    message: err.message,
-                    data: ''
-                });
-            } else if (user) {
-                res.json({
-                    code: 200,
-                    message: CodeMsg['200'],
-                    data: user
-                })
-            } else {
-                res.json({
-                    code: 10103,
-                    message: CodeMsg['10103'],
-                    data: ''
+        }, function(err, user) {
+            if (user) {
+                UserInfo.find({
+                    user: user
+                }, function (err, userInfo) {
+                    res.json({
+                        code: 200,
+                        message: CodeMsg['200'],
+                        data: userInfo
+                    });
                 });
             }
         });
