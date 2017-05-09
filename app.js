@@ -27,19 +27,6 @@ var options = {
 	}
 };
 
-var options = {
-    server: {
-        socketOptions: {
-            keepAlive: 300000, connectTimeoutMS: 30000
-        }
-    },
-    replset: {
-        socketOptions: {
-            keepAlive: 300000, connectTimeoutMS: 30000
-        }
-    }
-};
-
 // 连接mongodb
 mongoose.connect('mongodb://127.0.0.1/dear-stitp', options);
 var db = mongoose.connection;
