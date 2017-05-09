@@ -1,7 +1,6 @@
 /*index.css*/
 
 
-
 .div_footer{
 	text-align: center;
 }
@@ -22,6 +21,7 @@ li {
 
 .div_meet {
 	height: 30%;
+	margin-bottom: 30px;
 	/*margin-top: 3%;*/
 }
 
