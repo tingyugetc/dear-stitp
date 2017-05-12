@@ -1,4 +1,5 @@
 // index.js
+const BASE_SITE = "127.0.0.0:3000"
 
 function getJson() {
 	// body...
@@ -15,7 +16,7 @@ function getJson() {
 function getData(url, meeting) {
 	// body...
 	var request = new XMLHttpRequest();
-	request.open("get", BASE_SITE+url);
+	request.open("get", url);
 	request.setRequestHeader('Content-type', 'application/json');
 	// 指定服务端返回的数据类型
 	request.responseType = 'json';

@@ -1,5 +1,5 @@
 // login.js
-
+const BASE_SITE = "127.0.0.0:3000"
 function getDate() {
 	var name = document.getElementById('name').value;
 	var password = document.getElementById('password').value;

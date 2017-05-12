@@ -1,5 +1,5 @@
 // newMeeting.js
-
+	const BASE_SITE = "127.0.0.0:3000"
 	function getDate() {
 		var name = document.getElementById("input_name");
 		var address = document.getElementById("input_address");
