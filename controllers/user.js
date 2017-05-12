@@ -5,7 +5,10 @@
 
 const CodeMsg = require('../utils/code').code;
 const User = require('../models/user').User;
+const UserInfo = require('../models/userPersonInfo').UserPersonInfo;
 const bcrypt = require('bcrypt');
+const pinyin = require('pinyin');
+
 const saltRounds = 10;
 
 exports.create_user = function (req, res, next) {
@@ -92,12 +95,67 @@ exports.login = function (req, res, next) {
     // });
 };
 
+exports.user_info_copy = function (req, res, next) {
+    UserInfo.find(null, function (err, usersInfo) {
+        usersInfo.forEach(function (userInfo, index, arr) {
+            var name = pinyin(userInfo.name, {
+                style: pinyin.STYLE_NORMAL
+            });
+            var username = '';
+            for (var obj in name) {
+                username += name[obj][0];
+            }
+            var password = username;
 
+            bcrypt.hash(password, saltRounds, function (err, hash) {
+                console.log(hash);
+                User.create({
+                        username: username,
+                        password: hash
+                    }, function (err, user) {
+                        userInfo.user = user;
+                        userInfo.save();
+                        console.log(username);
+                    }
+                );
+            });
 
+        });
+    });
+};
 
-
-
-
-
-
-
+exports.user_info = function (req, res, next) {
+    var user_id = req.query.user_id || 0;
+    console.log(user_id);
+    if (user_id === 0) {
+        // 查看自己的信息
+        UserInfo.find({
+            user: req.session.user
+        }, function (err, userInfo) {
+            if (userInfo) {
+                res.json({
+                    code: 200,
+                    message: CodeMsg['200'],
+                    data: userInfo
+                });
+            }
+        });
+    } else {
+        // 查看他人的信息
+        User.find({
+            _id: user_id
+        }, function(err, user) {
+            if (user) {
+                UserInfo.find({
+                    user: user
+                }, function (err, userInfo) {
+                    res.json({
+                        code: 200,
+                        message: CodeMsg['200'],
+                        data: userInfo
+                    });
+                });
+            }
+        });
+    }
+};

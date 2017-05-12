@@ -1,6 +1,5 @@
 // index.js
 
-
 function getJson() {
 	// body...
 	var meeting = document.getElementsByTagName("table");
@@ -16,7 +15,7 @@ function getJson() {
 function getData(url, meeting) {
 	// body...
 	var request = new XMLHttpRequest();
-	request.open("get", url);
+	request.open("get", BASE_SITE+url);
 	request.setRequestHeader('Content-type', 'application/json');
 	// 指定服务端返回的数据类型
 	request.responseType = 'json';

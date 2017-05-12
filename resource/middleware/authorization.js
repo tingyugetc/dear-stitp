@@ -8,7 +8,7 @@ exports.requireLogin = function (req, res, next) {
     if (req.session.user) {
         return next();
     } else {
-        res.json({
+        return res.json({
             code: 10102,
             message: CodeMsg['10102'],
             data: ''
