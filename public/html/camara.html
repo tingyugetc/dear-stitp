@@ -1,0 +1,51 @@
+<!-- camara.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">  
+	<title>签到</title>
+	<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/camara.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="container first-div">
+	<form>
+		<div class="row" style="margin-top: 8%">
+			<div class="col-xs-4 col-xs-offset-2">
+				<img src="../img/19850008.jpg" id="local_img"  class="img-responsive img-thumbnail">
+			</div>
+			<div class="col-xs-4">
+				<img src="../img/19850008.jpg" id="updata_img"  class="img-responsive img-thumbnail">
+			</div>
+		</div>	
+		<div class="row"  style='height:50%' style="margin-top: 8%">
+			<video id="video" autoplay=""></video>
+		</div>
+		<div class="row" style="margin-top: 8%">
+			<!-- <div><button id='picture'>拍照</button></div> -->
+			<!-- <div class="col-xs-10 col-xs-offset-1"> -->
+			<div style="width: 90%;margin-left: 5%;">
+				<button type="button" class="btn btn-default btn-lg btn-block" id="picture">点击拍照</button>
+			</div>
+			<!-- <canvas id="canvas" width="640" height="480"></canvas> -->
+		</div>
+		<!-- <div class="row"> -->
+		<div class="form-group" style="margin-top: 8%">
+			<label for="signed_code" class="col-xs-8 col-xs-offset-2">请输入签到码</label>
+			<input type="email" class="form-control" id="signed_code" placeholder="6位签到码">
+		<div class="row" style="margin-top: 8%">
+			<!-- <div><button id='picture'>拍照</button></div> -->
+			<div style="width: 90%;margin-left: 5%">
+				<button type="button" class="btn btn-primary btn-lg btn-block" id="btn_submit">确认签到</button>
+			</div>
+			<!-- <canvas id="canvas" width="640" height="480"></canvas> -->
+		</div>
+
+		</div>
+	</form>
+</div>
+<script type="text/javascript" src="../js/camara.js"></script>
+</body>
+</html>

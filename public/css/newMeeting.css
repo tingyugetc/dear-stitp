@@ -43,3 +43,22 @@ button {
 	margin-top: 20px;
 	color: red;
 }
+
+
+.div_footer{
+	text-align: center;
+}
+
+ul {
+
+	width: 100%;
+}
+
+ul:first-child {
+	margin-left: 1%;
+}
+
+li {
+	width: 32%;
+	float: left;
+}

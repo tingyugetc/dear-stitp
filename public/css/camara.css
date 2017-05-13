@@ -1,0 +1,20 @@
+/*camara.css*/
+.img_style{
+	
+}
+
+.first-div {
+	
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/*background-color: #efefef;*/
+	width:80%;
+	height: 100%;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+}
+/*
+div {
+	margin-top: 8%;
+}*/
