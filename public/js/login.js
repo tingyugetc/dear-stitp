@@ -22,7 +22,11 @@ function getDate() {
 			// 获取服务端返回的数据
 			console.log(this.response);
 			if (this.response.code === 200) {
-                window.location.href='index.html';
+                // alert(this.response.data);
+                // console.log(this.response.data);
+                saveUserStorage(this.response.data);
+                getUserStorage();
+                // window.location.href='index.html';
             } else {
 				// alert(this.response.message);
 				AddSpan("div_span", this.response.message);
@@ -34,6 +38,19 @@ function getDate() {
     }
 
 }
+
+function saveUserStorage(userInfo) {
+    // body...
+    localStorage.setItem("username",userInfo.username);
+    localStorage.setItem("userid",userInfo._id);
+    localStorage.setItem("username",userInfo.password);
+}
+
+function getUserStorage() {
+    // body...
+    console.log(localStorage.getItem("username"));
+}
+
 
     function AddSpan(id, text) {
 
