@@ -7,6 +7,10 @@ td {
 	width: 60%;
 }
 
+tr {
+	width: 100%;
+}
+
 .td_text{
 	text-align: right;
 	margin-left: 5%;
@@ -22,12 +26,24 @@ table {
 	 background-color: #ffffff;
 	 /*margin-bottom: 20px;*/
 }
+<<<<<<< HEAD
 ul {
 
 	width: 100%;
 }
 .div_footer{
 	text-align: center;
+=======
+
+.div_footer{
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+ul {
+
+	width: 100%;
+>>>>>>> 59a3079631a9d808ced127bb12c1a49e2c3e1efe
 }
 
 ul:first-child {
@@ -38,3 +54,7 @@ li {
 	width: 32%;
 	float: left;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 59a3079631a9d808ced127bb12c1a49e2c3e1efe

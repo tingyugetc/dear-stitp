@@ -1,5 +1,5 @@
-// login.js
-const BASE_SITE = "127.0.0.0:3000"
+// create.js
+// const BASE_SITE = "127.0.0.0:3000"
 function getDate() {
 	var name = document.getElementById('name').value;
 	var password = document.getElementById('password').value;
@@ -7,7 +7,7 @@ function getDate() {
 	// POST请求
 	var req = new XMLHttpRequest();
 	// OPEN
-	req.open('POST', '/user/login');
+	req.open('POST', '/user/create_user');
     // req.open('POST', '/user/create_user');
 	// 设置请求头部信息
 	req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -24,12 +24,9 @@ function getDate() {
 			if (this.response.code === 200) {
                 // alert(this.response.data);
                 // console.log(this.response.data);
-                saveUserStorage(this.response.data);
-                getUserStorage();
-                window.location.href='index.html';
-		console.log(this.response.data);
-		saveUserStorage(this.response.data);
-	//	getUserStorage();
+                // saveUserStorage(this.response.data);
+                // getUserStorage();
+                window.location.href='login.html';
             } else {
 				// alert(this.response.message);
 				AddSpan("div_span", this.response.message);

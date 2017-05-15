@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*camara.css*/
 .img_style{
 	
@@ -18,3 +19,25 @@
 div {
 	margin-top: 8%;
 }
+=======
+/*camara.css*/
+.img_style{
+	
+}
+
+.first-div {
+	
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/*background-color: #efefef;*/
+	width:80%;
+	height: 100%;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+}
+/*
+div {
+	margin-top: 8%;
+}*/
+>>>>>>> 59a3079631a9d808ced127bb12c1a49e2c3e1efe

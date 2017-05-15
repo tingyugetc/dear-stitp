@@ -1,0 +1,20 @@
+.div_footer{
+	/*text-align: center;*/
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	/*background-color: #efefef;*/
+	width:50%;
+	height: 50%;
+
+	-webkit-transform: translateX(-50%) translateY(-50%);
+}
+
+.div_img{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.div_btn{
+	margin-top: 20px;
+}
