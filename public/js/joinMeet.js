@@ -34,12 +34,28 @@ function sendId() {
 	var start_time = document.getElementById("start_time");
 	start_time.innerHTML = localStorage.getItem("start_time");
 	var meetingFile = document.getElementById("meetingFile");
-	meetingFile.innerHTML = localStorage.getItem("meetingfile");
+	if(localStorage.getItem("meetingfile")){
+
+		meetingFile.innerHTML = localStorage.getItem("meetingfile");
+	}
+	else
+		meetingFile.innerHTML = "没有可下载文件";
 }())
 
 document.getElementById("login_btn").onclick = function() {
 	sendId();
 	window.location.href = "index.html";
+
+}
+
+document.getElementById("meetingFile").onclick = function() {
+	if(document.getElementById("meetingFile").innerHTML == "没有可下载文件"){
+		alert("会议发起者没有上传文件");
+	}
+	else{
+		window.location.href=localStorage.getItem("meetingfile");
+	}
+
 
 }
 
