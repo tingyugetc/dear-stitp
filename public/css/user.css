@@ -7,6 +7,10 @@ td {
 	width: 60%;
 }
 
+tr {
+	width: 100%;
+}
+
 .td_text{
 	text-align: right;
 	margin-left: 5%;
@@ -41,3 +45,4 @@ li {
 	width: 32%;
 	float: left;
 }
+
