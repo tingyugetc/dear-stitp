@@ -63,7 +63,7 @@ exports.login = function (req, res, next) {
                             res.json({
                                 code: 200,
                                 message: CodeMsg['200'],
-                                data: user.username
+                                data: user
                             });
                         } else {
                             res.json({
