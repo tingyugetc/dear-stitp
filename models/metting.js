@@ -30,6 +30,10 @@ const MeetingSchema = new Schema({
     file: {
         type: String,
         default: ''
+    },
+    signal_id: {
+    	type: Number,
+    	default: ''
     }
 });
 

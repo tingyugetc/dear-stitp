@@ -2,9 +2,9 @@
 function sendId() {
 	// body...
 	var joinMeeting = {
-		userid: localStorage.getItem("userid"),
+		userId: localStorage.getItem("userid"),
 		// username: localStorage.getItem("meetingusername"),
-		meetingid: localStorage.getItem("meetingid"),
+		meetingId: localStorage.getItem("meetingid"),
 		// meetingname: localStorage.getItem("meetingname")
 	};
 	var request = new XMLHttpRequest();

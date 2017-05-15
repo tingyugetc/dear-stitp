@@ -5,13 +5,15 @@ document.getElementById("createCheck-btn").onclick = function () {
 function sendMeetingId() {
 	// body...
 	var meetingId = localStorage.getItem("meetingid");
+	console.log(meetingId);
 	var request = new XMLHttpRequest();
-	url = "";
+	url = "/meeting/createSignalId";
 	request.open("GET", url);
 	request.responseType = "";
 	request.onload = function () {
 		if (this.status === 200) {
 			if (this.response.code === 200) {
+				console.log(this.response.data);
 				var signal = document.getElementById("signal_id");
 				signal.placeholder = this.response.data;
 			}
