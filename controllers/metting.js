@@ -127,25 +127,35 @@ exports.joinMeeting = function (req, res, next) {
 };
 
 exports.createSignalId = function (req, res, next) {
-	var meetingId = req.body.meetingId;
-	var chars = ['0','1','2','3','4','5','6','7','8','9'];
-	function suiJi() {
-	    var suiji = "";
-	    for(var i = 0; i < 6 ; i ++) {
-	        var id = Math.ceil(Math.random()*35);
-	        suiji += chars[id];
+	var meetingId = req.query.meetingId;
+	function getRandom() {
+        var chars = '0123456789';
+        var random = '';
+        for(var i = 0; i < 6; i ++) {
+	        var id = Math.ceil(Math.random() * 9);
+	        random += chars[id];
 	    }
-	    return suiji;
+	    return random;
 	}
 
-	var signalId = suiJi();
+	var signalId = getRandom();
 	Meeting.update({
 		_id: meetingId
-	},function(err, meeting){ 
-		res.json({
-			code: 200,
-			message: CodeMsg['200'],
-			data: meeting.signal_id
-		});
+	}, {
+	    signal_id: signalId
+    }, null, function(err, meeting){
+	    if (err) {
+	        res.json({
+                code: err.code,
+                message: err.message,
+                data: ''
+            });
+        } else {
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: signalId
+            });
+        }
 	});
 };
