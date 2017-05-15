@@ -91,10 +91,6 @@ getData.prototype.Data = function(url) {
 } 
 
 
-function setText() {
-	// body...
-
-}
 
 
 (function(){
