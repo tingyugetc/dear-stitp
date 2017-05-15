@@ -22,3 +22,19 @@ table {
 	 background-color: #ffffff;
 	 /*margin-bottom: 20px;*/
 }
+ul {
+
+	width: 100%;
+}
+.div_footer{
+	text-align: center;
+}
+
+ul:first-child {
+	margin-left: 1%;
+}
+
+li {
+	width: 32%;
+	float: left;
+}

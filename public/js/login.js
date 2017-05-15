@@ -23,6 +23,9 @@ function getDate() {
 			console.log(this.response);
 			if (this.response.code === 200) {
                 window.location.href='index.html';
+		console.log(this.response.data);
+		saveUserStorage(this.response.data);
+	//	getUserStorage();
             } else {
 				// alert(this.response.message);
 				AddSpan("div_span", this.response.message);
@@ -34,6 +37,19 @@ function getDate() {
     }
 
 }
+
+function saveUserStorage(userInfo) {
+    // body...
+    localStorage.setItem("username",userInfo.username);
+    localStorage.setItem("userid",userInfo._id);
+    localStorage.setItem("password",userInfo.password);
+}
+
+function getUserStorage() {
+    // body...
+    console.log(localStorage.getItem("username"));
+}
+
 
     function AddSpan(id, text) {
 

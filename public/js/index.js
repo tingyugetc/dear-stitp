@@ -15,7 +15,7 @@ function getJson() {
 function getData(url, meeting) {
 	// body...
 	var request = new XMLHttpRequest();
-	request.open("get", BASE_SITE+url);
+	request.open("get", url);
 	request.setRequestHeader('Content-type', 'application/json');
 	// 指定服务端返回的数据类型
 	request.responseType = 'json';
@@ -63,4 +63,5 @@ function createTd(obj, Meeting) {
 
 (function(){
 	getJson();
+	console.log(localStorage.getItem('username'));
 }());
