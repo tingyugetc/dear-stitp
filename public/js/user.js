@@ -111,12 +111,12 @@ function setText(titleText,bodyText) {
 }
 
 document.getElementById("achevement_click").onclick = function() {
-	var title_text = "个人简介";
+	var title_text = "个人成就";
 	var body_text = localStorage.getItem("userarea");
 	setText(title_text,body_text);
 }
 document.getElementById("indrduce_click").onclick = function() {
-	var title_text = "个人成就";
+	var title_text = "个人简介";
 	var body_text = localStorage.getItem("userresume");
 	setText(title_text,body_text);
 	
