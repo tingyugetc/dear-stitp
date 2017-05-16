@@ -111,14 +111,14 @@ exports.findJoinedList = function (req, res, next) {
 exports.getMeeting = function (req, res, next) {
     var meetingId = req.query._id;
     Meeting.findOne({
-        _id: meetingId
-    }, function (err, meeting) {
-        res.json({
-            code: 200,
-            message: CodeMsg['200'],
-            data: meeting
-        });
-    });
+		_id: meetingId
+	}, function (err, meeting) {
+		res.json({
+			code: 200,
+			message: CodeMsg['200'],
+			data: meeting
+		});
+	});
 };
 
 // 参加会议
@@ -127,25 +127,47 @@ exports.joinMeeting = function (req, res, next) {
 };
 
 exports.createSignalId = function (req, res, next) {
-	var meetingId = req.body.meetingId;
-	var chars = ['0','1','2','3','4','5','6','7','8','9'];
-	function suiJi() {
-	    var suiji = "";
-	    for(var i = 0; i < 6 ; i ++) {
-	        var id = Math.ceil(Math.random()*35);
-	        suiji += chars[id];
-	    }
-	    return suiji;
-	}
+	var meetingId = req.body.meetingId; //拿到get的数据
+	console.log(meetingId);
+	var number = [0,1,2,3,4,5,6,7,8,9];
 
-	var signalId = suiJi();
+    var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+
+    function suiJi(n) {
+        var suiji = "";
+        for(var i = 0; i < n ; i ++) {
+            var id = Math.ceil(Math.random()*35);
+            suiji += chars[id];
+        }
+        return suiji;
+    }
+
+	var signalId = suiJi(6);
 	Meeting.update({
 		_id: meetingId
-	},function(err, meeting){ 
-		res.json({
-			code: 200,
-			message: CodeMsg['200'],
-			data: meeting.signal_id
-		});
-	});
+	},{signal_id:signalId},null,
+    function(err, meeting){ 
+                if (err) {
+            res.json({
+                code: err.code,
+                message: CodeMsg[err.code] || CodeMsg['500'],
+                data: err.message
+            });
+        } else {
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: meeting.signal_id
+            });
+        }
+    });
 };
+
+// function(err, meeting){ 
+//         res.json({
+//             code: 200,
+//             message: CodeMsg['200'],
+//             data: meeting.signal_id
+//         });
+//     };
+// {$set:{status:"X"}}
