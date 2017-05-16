@@ -19,9 +19,9 @@ router.post('/meeting/create', meeting.create);
 router.get('/meeting/findList', meeting.findList);
 router.get('/meeting/findStartedList', authorization.requireLogin, meeting.findStartedList);
 router.get('/meeting/findJoinedList', authorization.requireLogin, meeting.findJoinedList);
-router.get('/meeting/joinMeeting', authorization.requireLogin, meeting.joinMeeting);
+// router.get('/meeting/joinMeeting', authorization.requireLogin, meeting.joinMeeting);
 router.get('/meeting/getMeeting', authorization.requireLogin, meeting.getMeeting);
 router.post('/meeting/createSignalId', authorization.requireLogin, meeting.createSignalId);
-router.post('/meeting/JionMeeting', authorization.requireLogin, meeting.JionMeeting);
+router.post('/meeting/joinMeeting', authorization.requireLogin, meeting.joinMeeting);
 
 module.exports = router;

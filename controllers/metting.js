@@ -5,6 +5,8 @@
 
 const Meeting = require('../models/metting').Meeting;
 const CodeMsg = require('../utils/code').code;
+const userMeetings = require('../models/userMeetings').userMeetings;
+const User = require('../models/user').User;
 const fs = require('fs');
 
 exports.create = function (req, res, next) {
@@ -108,6 +110,64 @@ exports.findJoinedList = function (req, res, next) {
     });
 };
 
+// 参加会议
+exports.joinMeeting = function (req, res, next) {
+    var loginUser = req.session.user;
+    var meetingId = req.body.meetingId;
+    console.log(loginUser.name);
+    console.log(meetingId);
+    Meeting.findOne({
+        _id: meetingId
+    }, function(err, joinmeeting) {
+        if (err) {
+            console.log("404 not found");
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: '404'
+            });          
+        } else {
+            console.log(joinmeeting);
+            userMeetings.findOne({
+                user: loginUser,
+                meetings: joinmeeting
+            }, function(err, hasJoinMeeting) {
+                if (hasJoinMeeting) {
+                    // console.log("您已加入，无需重复加入");
+                    res.json({
+                        code: 200,
+                        message: CodeMsg['200'],
+                        data: '300'
+                    });                   
+                } else{
+                    userMeetings.create({
+                        user: loginUser,
+                        meetings: joinmeeting                      
+                    }, function(err, meeting) {
+                        if (err) {
+                            // console.log("加入失败");
+                            res.json({
+                                code: 200,
+                                message: CodeMsg['200'],
+                                data: '11011'
+                            });                             
+                        } else {
+                            // console.log("成功加入");
+                            console.log(meeting);
+                            res.json({
+                                code: 200,
+                                message: CodeMsg['200'],
+                                data: '200'
+                            });                             
+                        }
+
+                    });
+                }
+            });
+        }
+    });
+};
+
 exports.getMeeting = function (req, res, next) {
     var meetingId = req.query._id;
     Meeting.findOne({
@@ -121,10 +181,7 @@ exports.getMeeting = function (req, res, next) {
 	});
 };
 
-// 参加会议
-exports.joinMeeting = function (req, res, next) {
 
-};
 
 exports.createSignalId = function (req, res, next) {
 	var meetingId = req.body.meetingId;

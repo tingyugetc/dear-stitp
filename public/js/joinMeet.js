@@ -27,7 +27,7 @@ function sendMeetingId() {
 	var meetingid = localStorage.getItem("meetingid");
 	console.log(meetingid);
 	var request = new XMLHttpRequest();
-	url = "/meeting/JionMeeting";
+	url = "/meeting/joinMeeting";
 	request.open("POST", url);
 	request.responseType = "json";
 	request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
