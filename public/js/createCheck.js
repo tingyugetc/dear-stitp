@@ -17,6 +17,7 @@ function sendMeetingId() {
 				console.log(this.response.data);
 				var signal = document.getElementById("signal_id");
 				signal.placeholder = this.response.data;
+				//localStorage.setItem("signalid",);
 			}
 			else
 				alert("没获取数据");
