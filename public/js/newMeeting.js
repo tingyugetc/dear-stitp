@@ -30,7 +30,7 @@
         var url = "/meeting/create";
 
 		var request = new XMLHttpRequest();
-		request.open("POST", url);
+		request.open("GET", url);
 		request.responseType = 'json';
 		request.send(formData);
 

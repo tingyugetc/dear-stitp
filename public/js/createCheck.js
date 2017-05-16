@@ -4,12 +4,13 @@ document.getElementById("createCheck-btn").onclick = function () {
 
 function sendMeetingId() {
 	// body...
-	var meetingId = localStorage.getItem("meetingid");
-	console.log(meetingId);
+	var meetingid = localStorage.getItem("meetingid");
+	console.log(meetingid);
 	var request = new XMLHttpRequest();
 	url = "/meeting/createSignalId";
-	request.open("GET", url);
-	request.responseType = "";
+	request.open("POST", url);
+	request.responseType = "json";
+	request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	request.onload = function () {
 		if (this.status === 200) {
 			if (this.response.code === 200) {
@@ -23,6 +24,7 @@ function sendMeetingId() {
 		else
 			alert("没有网络");
 	}
-	request.send(meetingId);
+	request.send("meetingId=" + meetingid);
+	//'username=' + name 
 
 }
