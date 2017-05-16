@@ -127,6 +127,7 @@ exports.joinMeeting = function (req, res, next) {
 };
 
 exports.createSignalId = function (req, res, next) {
+<<<<<<< HEAD
 	var meetingId = req.body.meetingId; //拿到get的数据
 	console.log(meetingId);
 	var number = [0,1,2,3,4,5,6,7,8,9];
@@ -152,11 +153,36 @@ exports.createSignalId = function (req, res, next) {
                 code: err.code,
                 message: CodeMsg[err.code] || CodeMsg['500'],
                 data: err.message
+=======
+	var meetingId = req.query.meetingId;
+	function getRandom() {
+        var chars = '0123456789';
+        var random = '';
+        for(var i = 0; i < 6; i ++) {
+	        var id = Math.ceil(Math.random() * 9);
+	        random += chars[id];
+	    }
+	    return random;
+	}
+
+	var signalId = getRandom();
+	Meeting.update({
+		_id: meetingId
+	}, {
+	    signal_id: signalId
+    }, null, function(err, meeting){
+	    if (err) {
+	        res.json({
+                code: err.code,
+                message: err.message,
+                data: ''
+>>>>>>> 1a2be56a69d7b0598cedc1f24daaa043a9ad75bc
             });
         } else {
             res.json({
                 code: 200,
                 message: CodeMsg['200'],
+<<<<<<< HEAD
                 data: meeting.signal_id
             });
         }
@@ -171,3 +197,10 @@ exports.createSignalId = function (req, res, next) {
 //         });
 //     };
 // {$set:{status:"X"}}
+=======
+                data: signalId
+            });
+        }
+	});
+};
+>>>>>>> 1a2be56a69d7b0598cedc1f24daaa043a9ad75bc
