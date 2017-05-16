@@ -32,7 +32,7 @@ const MeetingSchema = new Schema({
         default: ''
     },
     signal_id: {
-    	type: Number,
+    	type: String,
     	default: ''
     }
 });
