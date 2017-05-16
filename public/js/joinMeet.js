@@ -1,26 +1,63 @@
 
-function sendId() {
+// function sendId() {
+// 	// body...
+// 	var meetingId = localStorage.getItem("meetingid");
+// 	console.log(meetingId);
+// 	var request = new XMLHttpRequest();
+// 	// url = "/meeting/joinMeeting";
+// 	url = "/meeting/JionMeeting";
+// 	request.open("POST",url);
+// 	request.responseType = "json";
+// 	request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+// 	request.onload = function() {
+// 		if (this.status === 200 && this.response.code === 200) {
+// 			console.log(this.response);
+// 		}
+// 		else{
+// 			console.log("出错了");
+// 		}
+// 	}
+// 	request.send("meetingId" + meetingId);
+
+// }
+
+
+function sendMeetingId() {
 	// body...
-	var joinMeeting = {
-		userId: localStorage.getItem("userid"),
-		// username: localStorage.getItem("meetingusername"),
-		meetingId: localStorage.getItem("meetingid"),
-		// meetingname: localStorage.getItem("meetingname")
-	};
+	var meetingid = localStorage.getItem("meetingid");
+	console.log(meetingid);
 	var request = new XMLHttpRequest();
-	// url = "/meeting/joinMeeting";
-	url = "/meeting/getMeeting";
-	request.open("GET",url);
+	url = "/meeting/JionMeeting";
+	request.open("POST", url);
 	request.responseType = "json";
-	request.onload = function() {
-		if (this.status === 200 && this.response.code === 200) {
-			console.log(this.response);
+	request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	request.onload = function () {
+		if (this.status === 200) {
+			if (this.response.code === 200) {
+				console.log(this.response.data);
+				if (this.response.data === '404') {
+					alert("404 not found");
+				}
+				if (this.response.data === '11011') {
+					alert("加入会议失败");
+				}
+				if (this.response.data === '200') {
+					alert("成功加入会议");
+				}
+				if (this.response.data === '300') {
+					alert("您已存在,无需重复加入");
+				}	
+			}
+			else
+				alert("没获取数据");
 		}
+		else
+			alert("没有网络");
 	}
-	request.send(joinMeeting);
+	request.send("meetingId=" + meetingid);
+	//'username=' + name 
 
 }
-
 // (function (){}())
 
 (function showMeeting() {
@@ -43,8 +80,8 @@ function sendId() {
 }())
 
 document.getElementById("login_btn").onclick = function() {
-	sendId();
-	window.location.href = "index.html";
+	sendMeetingId();
+	// window.location.href = "index.html";
 
 }
 

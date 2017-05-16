@@ -26,11 +26,12 @@
 		formData.append("location", obj.location);
 		formData.append("start_time", obj.start_time);
 		formData.append("meeting", obj.meeting_file);
+		console.log(formData);
 
         var url = "/meeting/create";
 
 		var request = new XMLHttpRequest();
-		request.open("GET", url);
+		request.open("POST", url);
 		request.responseType = 'json';
 		request.send(formData);
 
