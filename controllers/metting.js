@@ -144,18 +144,22 @@ exports.createSignalId = function (req, res, next) {
     console.log(signalId);
 
     Meeting.findOne({
-        _id: meetingId,
-        signal_id: { $exists: true }
+        _id: meetingId
     }, function (err, meeting) {
         if (err) {
-            meeting.save({_id: meetingId,signal_id: signalId});
-            res.json({
-                code: 200,
-                message: CodeMsg['200'],
-                data: meeting.signal_id
-            });  
+            // meeting.save({_id: meetingId,signal_id: signalId});
+            // res.json({
+            //     code: 200,
+            //     message: CodeMsg['200'],
+            //     data: meeting.signal_id
+            // });
         }
-        //if (meeting.signal_id = signalId;meeting.save()) {}
+
+        if (meeting.signal_id === '') {
+            // 就是signal_id没有，为空
+            meeting.signal_id = signalId;
+            meeting.save();
+        }
         res.json({
             code: 200,
             message: CodeMsg['200'],
