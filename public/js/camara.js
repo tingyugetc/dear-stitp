@@ -3,19 +3,19 @@
 // var imgUrl;
 document.getElementById("picture").onclick = function() {
 
-	function gotoActivity() {
+	function gotoActivity('camara') {
 		// body...
-		var imgUrl = nativeMethod.toActivity('camara');
-		return imgUrl;
+		nativeMethod.toActivity('camara');
+		// return imgUrl;
 	}
 
-	var img = gotoActivity(img);
-	sendImg(img);
+	var img = gotoActivity(img);	
+	// sendImg(img);
 	// showImg();
 }
 
 document.getElementById("btn_submit").onclick = function() {
-	
+
 }
 
 function sendImg(imgUrl) {
