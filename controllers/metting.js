@@ -5,7 +5,7 @@
 
 const Meeting = require('../models/metting').Meeting;
 const CodeMsg = require('../utils/code').code;
-const userMeetings = require('../models/userMeetings').UserMeeting;
+const UserMeeting = require('../models/userMeetings').UserMeeting;
 const User = require('../models/user').User;
 const fs = require('fs');
 
@@ -92,17 +92,18 @@ exports.findStartedList = function (req, res, next) {
 exports.findJoinedList = function (req, res, next) {
     var user = req.session.user;
 
-    userMeetings.find({
+    UserMeeting.find({
         user: user
     }, null, {
         limit: 20,
-        populate: ['meetings', 'user']
+        populate: ['meeting', 'user', 'originator']
     }, function (err, userMeetings) {
         var meetings = userMeetings.map(function (element) {
-            return element.meetings;
+            var meeting = element.meeting;
+            meeting.user = element.originator;
+            return meeting;
         });
 
-        console.log(meetings);
         res.json({
             code: 200,
             message: CodeMsg['200'],
@@ -113,35 +114,35 @@ exports.findJoinedList = function (req, res, next) {
 
 // 参加会议
 exports.joinMeeting = function (req, res, next) {
-    var loginUser = req.session.user;
+    var user = req.session.user;
     var meetingId = req.body.meetingId;
     Meeting.findOne({
         _id: meetingId
-    }, function(err, joinmeeting) {
+    }, null, {
+        populate: 'user'
+    }, function(err, meeting) {
         if (err) {
-            console.log("404 not found");
             res.json({
                 code: 200,
                 message: CodeMsg['200'],
                 data: '404'
-            });          
+            });
         } else {
-            console.log(joinmeeting);
-            userMeetings.findOne({
-                user: loginUser,
-                meetings: joinmeeting
-            }, function(err, hasJoinMeeting) {
-                if (hasJoinMeeting) {
-                    // console.log("您已加入，无需重复加入");
+            UserMeeting.findOne({
+                user: user,
+                meeting: meeting
+            }, function(err, userMeeting) {
+                if (userMeeting) {
                     res.json({
                         code: 200,
                         message: CodeMsg['200'],
                         data: '300'
                     });                   
                 } else{
-                    userMeetings.create({
-                        user: loginUser,
-                        meetings: joinmeeting                      
+                    UserMeeting.create({
+                        user: user,
+                        meeting: meeting,
+                        originator: meeting.user
                     }, function(err, meeting) {
                         if (err) {
                             // console.log("加入失败");

@@ -21,4 +21,4 @@ const UserMeetingSchema = new Schema({
     }
 });
 
-exports.UserMeeting = mongoose.model('UserMeetings', UserMeetingSchema);
+exports.UserMeeting = mongoose.model('UserMeeting', UserMeetingSchema);
