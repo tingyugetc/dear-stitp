@@ -1,18 +1,18 @@
 // camara.js
 
 // var imgUrl;
-document.getElementById("picture").onclick = function() {
+// document.getElementById("picture").onclick = function() {
 
-	function gotoActivity('camara') {
-		// body...
-		nativeMethod.toActivity('camara');
-		// return imgUrl;
-	}
+// 	function gotoActivity('camara') {
+// 		// body...
+// 		nativeMethod.toActivity('camara');
+// 		// return imgUrl;
+// 	}
 
-	var img = gotoActivity(img);	
+	// var img = gotoActivity(img);	
 	// sendImg(img);
 	// showImg();
-}
+// }
 
 document.getElementById("btn_submit").onclick = function() {
 

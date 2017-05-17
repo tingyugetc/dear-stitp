@@ -24,7 +24,7 @@
 		</div>	
 		<div class="row" style="margin-top: 8%">
 			<div style="width: 90%;margin-left: 5%;">
-				<button type="button" class="btn btn-default btn-lg btn-block" id="picture">点击拍照</button>
+				<button type="button" class="btn btn-default btn-lg btn-block" id="picture" onclick="gotoActivity('camara')">点击拍照</button>
 			</div>
 			<!-- <canvas id="canvas" width="640" height="480"></canvas> -->
 		</div>
@@ -40,6 +40,11 @@
 		</div>
 	</form>
 </div>
+<script type="text/javascript">
+  function gotoActivity (activity) {
+    nativeMethod.toActivity(activity);
+  }
+</script>
 <script type="text/javascript" src="../js/camara.js"></script>
 </body>
 </html>
