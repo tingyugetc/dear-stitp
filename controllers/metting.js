@@ -89,9 +89,9 @@ exports.findStartedList = function (req, res, next) {
     });
 };
 
-exports.findJoinedList{
+exports.findJoinedList = function (req, res, next) {
     var user = req.session.user;
-    
+
     userMeetings.find({
         user: user
     }, null, {
