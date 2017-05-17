@@ -2,12 +2,13 @@
 
 .first-div {
 	
+	margin-top: 30%;
 	position: fixed;
-	top: 50%;
+	/*top: 50%;*/
 	left: 50%;
 	/*background-color: #efefef;*/
 	width:50%;
-	height: 50%;
+	/*height: 50%;*/
 
 	-webkit-transform: translateX(-50%) translateY(-50%);
 }
@@ -31,6 +32,11 @@ form {
 	margin: auto auto;
 */
 
+}
+
+.color{
+	background-color: #EB5266;
+	color: #ffffff;
 }
 
 #input-name{
