@@ -89,14 +89,32 @@ exports.findStartedList = function (req, res, next) {
     });
 };
 
+exports.findJoinedList{
+    var user = req.session.user;
+    
+    userMeetings.find({
+        user: user
+    }, null, {
+        limit: 20,
+        populate: ['meetings', 'user']
+    }, function (err, userMeetings) {
+        var meetings = userMeetings.map(function (element) {
+            return element.meetings;
+        });
 
+        console.log(meetings);
+        res.json({
+            code: 200,
+            message: CodeMsg['200'],
+            data: meetings
+        });
+    });
+};
 
 // 参加会议
 exports.joinMeeting = function (req, res, next) {
     var loginUser = req.session.user;
     var meetingId = req.body.meetingId;
-    console.log(loginUser.name);
-    console.log(meetingId);
     Meeting.findOne({
         _id: meetingId
     }, function(err, joinmeeting) {
