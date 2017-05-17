@@ -5,7 +5,7 @@
 
 const Meeting = require('../models/metting').Meeting;
 const CodeMsg = require('../utils/code').code;
-const userMeetings = require('../models/userMeetings').userMeetings;
+const userMeetings = require('../models/userMeetings').UserMeeting;
 const User = require('../models/user').User;
 const fs = require('fs');
 
