@@ -43,6 +43,7 @@ function sendMeetingId() {
 				}
 				if (this.response.data === '200') {
 					alert("成功加入会议");
+					window.location.href='camara.html';
 				}
 				if (this.response.data === '300') {
 					alert("您已存在,无需重复加入");

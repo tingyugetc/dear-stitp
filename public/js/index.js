@@ -28,7 +28,7 @@ function getData(url, meeting) {
 			console.log(url);
 			console.log(this.response.data);
 			this.response.data.forEach(function (element) {
-
+				// console.log()
 				createTd(element, meeting, meetingId);
 				meetingId ++;
 			});
@@ -71,6 +71,7 @@ function createTd(obj, Meeting, meetingId) {
 function sendMeetingId(event) {
 	// body...
 	// var id=event.target.getAttribute('id');
+	// console.log(url);
 	var id = event.id;
 	console.log(id);
 	var request = new XMLHttpRequest();
