@@ -57,7 +57,7 @@ exports.findList = function (req, res, next) {
             sort: '-start_time',
             populate: 'user'
         }, function (err, meetings) {
-            console.log(meetings);
+            // console.log(meetings);
             res.json({
                 code: 200,
                 message: CodeMsg['200'],
@@ -89,26 +89,7 @@ exports.findStartedList = function (req, res, next) {
     });
 };
 
-exports.findJoinedList = function (req, res, next) {
-    var user = req.session.user;
 
-    Meeting.find({
-        user: user
-    }, null, {
-        limit: 20,
-        sort: '-start_time',
-        populate: 'user'
-    }, function (err, meetings) {
-        meetings.forEach(function (element) {
-            element['username'] = element.user.username;
-        });
-        res.json({
-            code: 200,
-            message: CodeMsg['200'],
-            data: meetings
-        });
-    });
-};
 
 // 参加会议
 exports.joinMeeting = function (req, res, next) {
@@ -222,7 +203,6 @@ exports.createSignalId = function (req, res, next) {
             message: CodeMsg['200'],
             data: meeting.signal_id
         });           
-
 
     });
 };
