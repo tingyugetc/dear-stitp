@@ -23,7 +23,7 @@ function sendMeetingId() {
 				alert("没获取数据");
 		}
 		else
-			alert("没有网络");
+			alert("未收到后端响应");
 	}
 	request.send("meetingId=" + meetingid);
 	//'username=' + name 

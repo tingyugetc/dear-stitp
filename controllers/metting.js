@@ -57,7 +57,7 @@ exports.findList = function (req, res, next) {
             sort: '-start_time',
             populate: 'user'
         }, function (err, meetings) {
-            console.log(meetings);
+            // console.log(meetings);
             res.json({
                 code: 200,
                 message: CodeMsg['200'],
@@ -221,7 +221,6 @@ exports.createSignalId = function (req, res, next) {
             message: CodeMsg['200'],
             data: meeting.signal_id
         });           
-
 
     });
 };
