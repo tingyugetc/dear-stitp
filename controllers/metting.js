@@ -227,7 +227,7 @@ exports.createSignalId = function (req, res, next) {
     });
 };
 
-exports.user_sign = function (req, res, next) {
+exports.userSign = function (req, res, next) {
     var user = req.session.user;
     var meetingId = req.body._id;
     if (req.files.length > 0) {
