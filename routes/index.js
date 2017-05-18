@@ -23,5 +23,6 @@ router.get('/meeting/findJoinedList', authorization.requireLogin, meeting.findJo
 router.get('/meeting/getMeeting', authorization.requireLogin, meeting.getMeeting);
 router.post('/meeting/createSignalId', authorization.requireLogin, meeting.createSignalId);
 router.post('/meeting/joinMeeting', authorization.requireLogin, meeting.joinMeeting);
+router.post('/meeting/userSign', authorization.requireLogin, meeting.userSign);
 
 module.exports = router;

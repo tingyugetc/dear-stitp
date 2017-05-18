@@ -8,6 +8,7 @@ const CodeMsg = require('../utils/code').code;
 const UserMeeting = require('../models/userMeetings').UserMeeting;
 const User = require('../models/user').User;
 const fs = require('fs');
+const shell = require('shelljs');
 
 exports.create = function (req, res, next) {
     var name = req.body.name;
@@ -224,4 +225,34 @@ exports.createSignalId = function (req, res, next) {
         });           
 
     });
+};
+
+exports.userSign = function (req, res, next) {
+    var user = req.session.user;
+    var meetingId = req.body._id;
+    if (req.files.length > 0) {
+        // 获取文件的临时路径
+        var tmp_path = './' + req.files[0].path;
+        var target_path = './public/upload/' + req.files[0].originalname;
+
+        fs.rename(tmp_path, target_path, function (err) {
+            if (err) throw err;
+        });
+    } else {
+        res.json({
+            code: 10104,
+            message: CodeMsg['10104'],
+            date: ''
+        });
+    }
+
+    console.log(
+        shell.exec('cd /root/code/Seetaface/SeetaFaceEngine/FaceIdentification && ./build000/src/test/test_face_recognizer.bin /home/dear-stitp/public/upload/' + + req.files[0].originalname)
+    );
+    res.json({
+        code: 200,
+        message: CodeMsg['200'],
+        data: ''
+    })
+
 };
