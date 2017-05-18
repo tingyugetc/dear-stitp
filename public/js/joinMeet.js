@@ -47,7 +47,8 @@ function sendMeetingId() {
 				}
 				if (this.response.data === '300') {
 					alert("您已存在,无需重复加入");
-				}	
+                    window.location.href='camara.html';
+                }
 			}
 			else
 				alert("没获取数据");
