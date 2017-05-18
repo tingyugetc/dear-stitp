@@ -7,7 +7,6 @@ document.getElementById("signal_list_btn").onclick = function () {
 	window.location.href = "testcamera.html";
 };
 
-
 function sendMeetingId() {
 	// body...
 	var meetingid = localStorage.getItem("meetingid");
