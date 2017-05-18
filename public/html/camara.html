@@ -41,12 +41,14 @@
 	</form>
 </div>
 <script type="text/javascript">
-  function gotoActivity (activity) {
-    var path = nativeMethod.toActivity(activity);
-    var img = document.getElementById("pic");
-    img.src = path;
-    // console.log(nativeMethod.toActivity(activity));
-  }
+  	function gotoActivity (activity) {
+    	nativeMethod.toActivity(activity);
+  	}
+	function wave2(name) {
+		alert(name);
+    	var img = document.getElementById("pic");
+    	img.src = name;
+	}
 </script>
 <script type="text/javascript" src="../js/camara.js"></script>
 </body>
