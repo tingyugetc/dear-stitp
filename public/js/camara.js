@@ -20,7 +20,7 @@
 	}
 }())
 
-userlogo
+// userlogo
 
 document.getElementById("btn_submit").onclick = function() {
 
