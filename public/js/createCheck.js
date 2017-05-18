@@ -1,6 +1,12 @@
 document.getElementById("createCheck-btn").onclick = function () {
 	sendMeetingId();
 }
+document.getElementById("signal_list_btn").onclick = function () {
+	// sendMeetingId();
+	window.location.href = "signal_list.html";
+}
+
+signal_list_btn
 
 function sendMeetingId() {
 	// body...
@@ -14,10 +20,11 @@ function sendMeetingId() {
 	request.onload = function () {
 		if (this.status === 200) {
 			if (this.response.code === 200) {
-				console.log(this.response.data);
+				// console.log(this.response.data);
 				var signal = document.getElementById("signal_id");
 				signal.placeholder = this.response.data;
-				//localStorage.setItem("signalid",);
+				// localStorage.setItem("signal_id",this.response.data);
+				// console.log(localStorage.getItem("signal_id"));
 			}
 			else
 				alert("没获取数据");
