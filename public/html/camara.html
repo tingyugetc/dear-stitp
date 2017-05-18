@@ -46,11 +46,26 @@
   	}
 	function wave2(name) {
 		alert(name);
-    	var img = document.getElementById("pic");
+    	var imge = document.getElementById("pic");
     	// var aname = file:///storage/emulated/0/temp.png
     	var aname =  "file://" + name;
     	// if (true) {}
-    	img.src = aname;
+    	imge.src = aname;
+    	if (aname == "file:///storage/emulated/0/temp.png") {
+    		imgfile = aname.files[0];
+    		console.log(imgfile.length);
+    	}
+    	else
+    		console.log("aname is not file:///storage/emulated/0/temp.png");
+
+    	var imgfile = aname;
+    	var reader = new FileReader();
+	    reader.onload = (function(imge) { 
+	      return function(e) { 
+	        imge.src = e.target.result; 
+	      }; 
+	    })(img);
+	    reader.readAsDataURL(file);
     	// console.log("")
 	}
 </script>
