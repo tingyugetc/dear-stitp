@@ -38,6 +38,7 @@ getData.prototype.Data = function(url) {
 				var user_info = this.response.data[0];
 				localStorage.setItem("userarea",user_info.area);
 				localStorage.setItem("userresume",user_info.resume);
+				localStorage.setItem("userlogo",user_info.nick_logo);
 				if (user_info != undefined) {
 					if(img[0]){
 						img[0].src = user_info.nick_logo;

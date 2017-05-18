@@ -14,6 +14,14 @@
 	// showImg();
 // }
 
+(function(){
+	if (localStorage.getItem("userlogo")) {
+		document.getElementById("local_img").src = localStorage.getItem("userlogo");
+	}
+}())
+
+userlogo
+
 document.getElementById("btn_submit").onclick = function() {
 
 }
