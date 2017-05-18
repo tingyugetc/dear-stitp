@@ -246,10 +246,10 @@ exports.userSign = function (req, res, next) {
         });
     }
 
-    console.log(shell.ls('*.js'));
-    console.log(
-        shell.exec('cd /root/code/Seetaface/SeetaFaceEngine/FaceIdentification && ./build000/src/test/test_face_recognizer.bin /home/dear-stitp/public/upload/' + req.files[0].originalname)
-    );
+    var result = shell.exec('cd /root/code/Seetaface/SeetaFaceEngine/FaceIdentification && ./build000/src/test/test_face_recognizer.bin /home/dear-stitp/public/upload/' + req.files[0].originalname);
+    result = result.split('\n');
+    console.log(result);
+
     res.json({
         code: 200,
         message: CodeMsg['200'],
