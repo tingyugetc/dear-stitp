@@ -7,7 +7,7 @@ document.getElementById("signal_list_btn").onclick = function () {
 	window.location.href = "testcamera.html";
 }
 
-signal_list_btn
+// signal_list_btn
 
 function sendMeetingId() {
 	// body...
