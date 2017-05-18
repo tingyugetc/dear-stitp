@@ -21,7 +21,10 @@ function getSignalList(argument) {
 	request.onload = function () {
 		if (this.status === 200) {
 			if (this.response.code === 200) {
-				this.response.data.forEach(function(user){})
+				this.response.data.forEach(function(username){
+					createTd(username, userClickId);
+					userClickId ++;
+				})
 			}
 			else
 				alert("没获取数据");
@@ -34,19 +37,39 @@ function getSignalList(argument) {
 
 }
 
-function createTd(obj, Meeting, userClickId) {
+function createTd(obj, userClickId) {
 	// var tr = document.createElement("a");
 	// tr.setAttribute("id",userClickId);
 	// tr.setAttribute("onclick", "sendMeetingId(this)");
 	var a = document.createElement("a");
-	var node = document.createTextNode(obj.name);
-
+	var node = document.createTextNode(obj);
 	a.setAttribute("id",userClickId);
 	a.setAttribute("onclick", "showUser(this)");
 	a.setAttribute("class", "list-group-item");
-	a.appendChild(node);
+	var div = document.getElementById("div_signal")
+	div.appendChild(node);
 }
 
-function showUser(argument) {
+function showUser(event) {
 	// body...
+	// var id=event.target.getAttribute('id');
+	// console.log(url);
+	var id = event.id;
+	console.log(id);
+	var username = document.getElementById(id);
+	var request = new XMLHttpRequest();
+	request.open("post", "");
+	request.setRequestHeader('Content-type', 'application/json');
+	// 指定服务端返回的数据类型
+	request.responseType = 'json';
+	// 监听请求完成事件，然后判断响应是否正确
+	request.onload = function (err) {
+		// 响应正确，成功拿到后端的数据
+		if (this.status === 200 && this.response.code === 200) {
+			
+		}
+	};
+	// 发起请求
+	request.send("username="+username);
+
 }

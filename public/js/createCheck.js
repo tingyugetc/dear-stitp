@@ -3,7 +3,8 @@ document.getElementById("createCheck-btn").onclick = function () {
 }
 document.getElementById("signal_list_btn").onclick = function () {
 	// sendMeetingId();
-	window.location.href = "signal_list.html";
+	// window.location.href = "signal_list.html";
+	window.location.href = "testcamera.html";
 }
 
 signal_list_btn
