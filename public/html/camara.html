@@ -17,9 +17,9 @@
 				<img src="../img/19850008.jpg" id="local_img"  class="img-responsive img-thumbnail">
 			</div>
 		</div>
-		<div class="row" style="margin-top: 8%;display: none;">
+		<div class="row" style="margin-top: 8%;">
 			<div class="col-xs-5" style="margin-left: 30%">
-				<img src="../img/19850008.jpg" id="local_img"  class="img-responsive img-thumbnail">
+				<img src="../img/19850008.jpg" id="pic"  class="img-responsive img-thumbnail">
 			</div>
 		</div>	
 		<div class="row" style="margin-top: 8%">
@@ -42,8 +42,10 @@
 </div>
 <script type="text/javascript">
   function gotoActivity (activity) {
-    nativeMethod.toActivity(activity);
-    console.log(nativeMethod.toActivity(activity));
+    var path = nativeMethod.toActivity(activity);
+    var img = document.getElementById("pic");
+    img.src = path;
+    // console.log(nativeMethod.toActivity(activity));
   }
 </script>
 <script type="text/javascript" src="../js/camara.js"></script>
