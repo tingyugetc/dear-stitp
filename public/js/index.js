@@ -102,6 +102,7 @@ function sendMeetingId(event) {
 			localStorage.setItem("meetingname",this.response.data[id].name);
 			localStorage.setItem("start_time",this.response.data[id].start_time);
 			localStorage.setItem("meetingusername",this.response.data[id].user.username);
+			localStorage.setItem('meeting_signal', this.response.data[id].signal_id);
 			// localStorage.setItem("meetingusername",this.response.data[id].user.username);
 			console.log(localStorage.getItem("meetingid"));
 			if (localStorage.getItem('username') && localStorage.getItem('meetingusername')) {

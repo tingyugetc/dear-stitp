@@ -1,13 +1,12 @@
 document.getElementById("createCheck-btn").onclick = function () {
 	sendMeetingId();
-}
+};
 document.getElementById("signal_list_btn").onclick = function () {
 	// sendMeetingId();
 	// window.location.href = "signal_list.html";
 	window.location.href = "testcamera.html";
-}
+};
 
-signal_list_btn
 
 function sendMeetingId() {
 	// body...
@@ -34,6 +33,15 @@ function sendMeetingId() {
 			alert("未收到后端响应");
 	}
 	request.send("meetingId=" + meetingid);
-	//'username=' + name 
+	//'username=' + name
 
 }
+
+(function () {
+	var signal = localStorage.getItem('meeting_signal');
+	if (signal !== '') {
+		document.getElementById('signal_id').setAttribute('value', signal);
+		document.getElementById('createCheck-btn').setAttribute('disabled', 'disabled');
+	}
+
+})();
