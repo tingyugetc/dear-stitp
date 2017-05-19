@@ -1,5 +1,5 @@
 <!-- camara.html -->
-
+<!-- file:///storage/emulated/0/temp.png -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +14,12 @@
 	<form>
 		<div class="row" style="margin-top: 30%">
 			<div class="col-xs-5" style="margin-left: 30%">
-				<img src="../img/19850008.jpg" id="local_img"  class="img-responsive img-thumbnail">
+				<img src="../img/19970058.jpg" id="local_img"  class="img-responsive img-thumbnail">
 			</div>
 		</div>
 		<div class="row" style="margin-top: 8%;">
-			<div class="col-xs-5" style="margin-left: 30%">
-				<img src="file:///storage/emulated/0/temp.png" id="pic"  class="img-responsive img-thumbnail">
+			<div class="col-xs-5"  id="div_show" style="margin-left: 30%"> 
+				<img src="" id="pic"  class="img-responsive img-thumbnail">
 			</div>
 		</div>	
 		<div class="row" style="margin-top: 8%">
@@ -31,6 +31,10 @@
 		<div class="row" style="margin-top: 15%">
 			<!-- <div><button id='picture'>拍照</button></div> -->
 			<input type="text" class="form-control" name="" id="signal_id" placeholder="请输入签到码" style="width: 90%;margin-left: 5%">
+
+
+			<input type="file" class="form-control" name="" id="file_input" placeholder="请输入签到码" style="width: 90%;margin-left: 5%">
+
 			<div style="width: 90%;margin-left: 5%;margin-top: 5%;">
 				<button type="button" class="btn btn-primary btn-lg btn-block" id="btn_submit">确认签到</button>
 			</div>
@@ -49,6 +53,8 @@
     	var imge = document.getElementById("pic");
     	// var aname = file:///storage/emulated/0/temp.png
     	var aname =  "file://" + name;
+    	 // var aname =  "file://" + name;
+
     	// if (true) {}
     	imge.src = aname;
     	if (aname == "file:///storage/emulated/0/temp.png") {

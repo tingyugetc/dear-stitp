@@ -23,7 +23,53 @@
 // userlogo
 
 document.getElementById("btn_submit").onclick = function() {
+  	previewFile();
+}
 
+
+function previewFile() {
+
+	var imge = document.getElementById("pic");
+	var aname = "../img/19970058.jpg"
+	var file = new File([''], aname);
+	console.log(file);
+    // var file    = document.querySelector('input[type=file]').files[0];
+    // var file = document.getElementById("file_input").files[0];
+	var reader  = new FileReader();
+
+	reader.addEventListener("load", function () {
+	  imge.src = reader.result;
+	}, false);
+
+	if (file) {
+	  reader.readAsDataURL(file);
+	}
+}
+
+function handleFiles(files) {
+  for (var i = 0; i < files.length; i++) {
+    var file = files[i];
+    var imageType = /^image\//;
+    
+    if ( !imageType.test(file.type) ) {
+      continue;
+    }
+    
+    var img = document.createElement("img");
+    img.classList.add("obj");
+    img.file = file;
+    var preview = document.getElementById("div_show");
+    // 假设 "preview" 是将要展示图片的 div
+    preview.appendChild(img);
+    
+    var reader = new FileReader();
+    reader.onload = (function(aImg) { 
+      return function(e) { 
+        aImg.src = e.target.result; 
+      }; 
+    })(img);
+    reader.readAsDataURL(file);
+  }
 }
 
 function sendImg(imgUrl) {
