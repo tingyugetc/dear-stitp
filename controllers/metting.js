@@ -231,6 +231,8 @@ exports.userSign = function (req, res, next) {
     var user = req.session.user;
     var meetingId = req.body._id;
     if (req.files.length > 0) {
+        console.log('get the file ' + req.files[0].originalname);
+
         // 获取文件的临时路径
         var tmp_path = './' + req.files[0].path;
         var target_path = './public/upload/' + req.files[0].originalname;
