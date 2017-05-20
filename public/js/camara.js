@@ -14,6 +14,10 @@
 	// showImg();
 // }
 
+document.getElementById("back").onclick = function () { history.go(-1); };
+
+document.getElementById("pre").onclick = function () { history.go(1); };
+
 (function(){
 	if (localStorage.getItem("userlogo")) {
 		document.getElementById("local_img").src = localStorage.getItem("userlogo");
@@ -30,7 +34,7 @@ document.getElementById("btn_submit").onclick = function() {
 function previewFile() {
 
 	var imge = document.getElementById("pic");
-	var aname = "../img/19970058.jpg"
+	var aname = "../img/19970058.jpg";
 	var file = new File([''], aname);
 	console.log(file);
     // var file    = document.querySelector('input[type=file]').files[0];

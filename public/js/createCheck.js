@@ -7,6 +7,11 @@ document.getElementById("signal_list_btn").onclick = function () {
 	window.location.href = "testcamera.html";
 };
 
+
+document.getElementById("back").onclick = function () { history.go(-1); };
+
+document.getElementById("pre").onclick = function () { history.go(1); };
+
 function sendMeetingId() {
 	// body...
 	var meetingid = localStorage.getItem("meetingid");
@@ -30,7 +35,7 @@ function sendMeetingId() {
 		}
 		else
 			alert("未收到后端响应");
-	}
+	};
 	request.send("meetingId=" + meetingid);
 	//'username=' + name
 

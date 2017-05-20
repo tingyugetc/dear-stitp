@@ -22,6 +22,10 @@
 // }
 
 
+document.getElementById("back").onclick = function () { history.go(-1); };
+
+document.getElementById("pre").onclick = function () { history.go(1); };
+
 function sendMeetingId() {
 	// body...
 	var meetingid = localStorage.getItem("meetingid");
@@ -90,7 +94,7 @@ document.getElementById("login_btn").onclick = function() {
 }
 
 document.getElementById("meetingFile").onclick = function() {
-	if(document.getElementById("meetingFile").innerHTML == "没有可下载文件"){
+	if(document.getElementById("meetingFile").innerHTML === "没有可下载文件"){
 		alert("会议发起者没有上传文件");
 	}
 	else{

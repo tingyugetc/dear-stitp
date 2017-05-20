@@ -1,16 +1,9 @@
 // index.js
 // const BASE_SITE = "127.0.0.0:3000"
 
-// (function (){
+document.getElementById("back").onclick = function () { history.go(-1); };
 
-// 	var count = 0;
-// 	if (count === 0) {
-
-// 		window.location.href=window.location.href; 
-// 		window.location.reload; 	
-// 		count = 1;
-// 	}
-// }())
+document.getElementById("pre").onclick = function () { history.go(1); };
 
 function getJson() {
 	// body...
