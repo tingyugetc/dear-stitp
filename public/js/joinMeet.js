@@ -76,9 +76,11 @@ function sendMeetingId() {
 	if(localStorage.getItem("meetingfile")){
 
 		meetingFile.innerHTML = localStorage.getItem("meetingfile");
+		meetingFile.href = localStorage.getItem("meetingfile");
 	}
 	else
 		meetingFile.innerHTML = "没有可下载文件";
+		meetingFile.href = "";
 }())
 
 document.getElementById("login_btn").onclick = function() {
