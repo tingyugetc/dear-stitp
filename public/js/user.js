@@ -1,11 +1,15 @@
 // user.js
 
+document.getElementById("back").onclick = function () { history.go(-1); };
+
+document.getElementById("pre").onclick = function () { history.go(1); };
+
 function error(obj) {
 	this.object = obj;
 }
 
 error.prototype.inexistence_error = function() {
-	if (this.object == undefined) {return "不存在";}
+	if (this.object === undefined) {return "不存在";}
 };
 
 error.prototype.http_error = function() {
@@ -14,7 +18,7 @@ error.prototype.http_error = function() {
 
 function getData(ele) {
 	this.element = ele;
-	if (this.element == undefined) {
+	if (this.element === undefined) {
 		var err = new error(ele);
 		console.log(err.inexistence_error());
 		// return -1;
@@ -39,7 +43,7 @@ getData.prototype.Data = function(url) {
 				localStorage.setItem("userarea",user_info.area);
 				localStorage.setItem("userresume",user_info.resume);
 				localStorage.setItem("userlogo",user_info.nick_logo);
-				if (user_info != undefined) {
+				if (user_info !== undefined) {
 					if(img[0]){
 						img[0].src = user_info.nick_logo;
 					}
@@ -86,10 +90,10 @@ getData.prototype.Data = function(url) {
 			var err = new error(this.status);
 			console.log(err.http_error());
 		}
-	}
+	};
 	request.send();
 	return 0;
-} 
+};
 
 
 
@@ -101,7 +105,7 @@ getData.prototype.Data = function(url) {
 	console.log(getText.Data);
 	// getText.Data();
 
-}())
+}());
 
 function setText(titleText,bodyText) {
 	// body...
@@ -115,13 +119,13 @@ document.getElementById("achevement_click").onclick = function() {
 	var title_text = "个人成就";
 	var body_text = localStorage.getItem("userarea");
 	setText(title_text,body_text);
-}
+};
 document.getElementById("indrduce_click").onclick = function() {
 	var title_text = "个人简介";
 	var body_text = localStorage.getItem("userresume");
 	setText(title_text,body_text);
 	
-}
+};
 
 // area:"1.算法网络经济<br />包括在群智感知、数据中心资源分配、移动社交网络中的市场机制设计<br>2.无线自组网和无线传感网<br>包括路由协议、拓扑控制、拥塞控制、数据收集、服务质量保证等<br>3.无线网络和移动计算<br>包括覆盖层网络体系结构、群智感知技术、容迟网络体系结构、社会移动模型等<br>4.物联网技术及其应用<br>包括物联网体系结构、异构物联网融合、物联网在应急通信、远程医疗等方面的应用<br><br>我可在信息网络(0810Z2)专业招收博士研究生,在0835软件工程专业招收学术型硕士研究生，在计算机技术(085211)、软件工程(085212)招收全日制专业学位硕士研究生。<br />"
 // degree:"工学博士"

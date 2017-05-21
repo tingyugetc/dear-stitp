@@ -1,0 +1,53 @@
+body {
+    background-color: #efefef;
+    font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei","Microsoft YaHei UI","Microsoft YaHei",sans-serif;
+}
+
+.back{
+    background-image: url('../img/promo-bg.jpg');
+    /*width: 1250px;*/
+    background-size: 100%;
+    height: 150px;
+    /*position:fixed;*/
+}
+
+.div_middle {
+    margin-top: 5%;
+    padding: -2%;
+    margin-left: 3%;
+    margin-right: 4%;
+    margin-bottom: 3%;
+    background-color: #ffffff;
+    height: 30%;
+}
+
+.div_small {
+    padding: 1% 5%;
+}
+
+h4 {
+    font-size: 1.5em;
+}
+
+.div_small .title {
+    padding-bottom: 7px;
+    /*border-bottom: 1px solid #ef6c41;*/
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 21px;
+    position: relative;
+}
+
+.div_small .title:after {
+    content: "";
+    width: 90px;
+    height: 1px;
+    background: #e67e22;
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+}
+
+.div_small2{
+    padding: 2% 7%;
+
+}

@@ -1,5 +1,31 @@
 /*index.css*/
 
+.bag{
+	background-image: url('../img/promo-bg.jpg');
+	background-size: 100%;
+	height: 150px;
+}
+
+.p_sty{
+	font-size: 22px;
+	height:25px; 
+	line-height:100px; 
+	color: #ffffff;
+}
+
+.p_style{
+	font-size: 20px;
+	height:25px; 
+	line-height:100px; 
+	color: #ffffff;
+>>>>>>> 880dc721aede7ecee0205831b76c874a3a7eec77
+}
+
+.img{
+	top: 10%;
+	left: 5%;
+}
+
 .color{
 	background-color: #eeeeee; 
 }
@@ -25,14 +51,20 @@ li {
 .div_meet {
 	height: 30%;
 	margin-bottom: 50px;
-	/*margin-top: 3%;*/
 }
 
 hr {
-
-	/*color:#ffffff;*/
-
 	border:0;
 	background-color:#ffffff;
 	height:1px;
+}
+
+.td_text{
+	text-align: right;
+	margin-left: 5%;
+	width: 40%;
+}
+
+table {
+	margin: 0 auto;
 }

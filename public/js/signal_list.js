@@ -5,7 +5,7 @@
 	var meetingNameEle = document.getElementById("meeting_signal");
 	var meetingName = localStorage.getItem("meetingname");
 	meetingNameEle.innerHTML = meetingName + "的签到列表";
-}())
+}());
 
 function getSignalList(argument) {
 	// body...
@@ -31,7 +31,7 @@ function getSignalList(argument) {
 		}
 		else
 			alert("未收到后端响应");
-	}
+	};
 	request.send("meetingId=" + meetingid);
 	//'username=' + name 
 
@@ -46,9 +46,14 @@ function createTd(obj, userClickId) {
 	a.setAttribute("id",userClickId);
 	a.setAttribute("onclick", "showUser(this)");
 	a.setAttribute("class", "list-group-item");
-	var div = document.getElementById("div_signal")
+	var div = document.getElementById("div_signal");
 	div.appendChild(node);
 }
+
+
+document.getElementById("back").onclick = function () { history.go(-1); };
+
+document.getElementById("pre").onclick = function () { history.go(1); };
 
 function showUser(event) {
 	// body...
