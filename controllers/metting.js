@@ -261,8 +261,8 @@ exports.userSign = function (req, res, next) {
 };
 
 exports.meetingMessage = function (req, res, next) {
-    var meetingmessage = req.body.message;
-    var userid = req.body.userId;
+    // var meetingmessage = req.body.message;
+    // var userid = req.body.userId;
     var meetingid = req.body.meetingId;
     Meeting.findOne({
         _id: meetingid
@@ -286,5 +286,9 @@ exports.meetingMessage = function (req, res, next) {
             }
         });
     });
+
+};
+
+exports.AddMeetingMessage = function (req, res, next) {
 
 };
