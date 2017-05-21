@@ -250,12 +250,41 @@ exports.userSign = function (req, res, next) {
 
     var result = shell.exec('cd /root/code/Seetaface/SeetaFaceEngine/FaceIdentification && ./build000/src/test/test_face_recognizer.bin /home/dear-stitp/public/upload/' + req.files[0].originalname);
     result = result.split('\n');
-    console.log(result);
+    console.log(result[result.length - 2]);
 
     res.json({
         code: 200,
         message: CodeMsg['200'],
         data: ''
     })
+
+};
+
+exports.meetingMessage = function (req, res, next) {
+    var meetingmessage = req.body.message;
+    var userid = req.body.userId;
+    var meetingid = req.body.meetingId;
+    Meeting.findOne({
+        _id: meetingid
+    }, function (err, meeting) {
+        UserMeeting.find({
+            meeting:meeting
+        }, function (err, meetings) {
+            if(err) {
+                res.json({
+                    code:10104,
+                    message: CodeMsg['10104'],
+                    data:''
+                })
+            }
+            else{
+                res.json({
+                    code: 200,
+                    message: CodeMsg[200],
+                    data: meetings
+                })
+            }
+        });
+    });
 
 };

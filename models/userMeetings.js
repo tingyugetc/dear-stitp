@@ -18,6 +18,14 @@ const UserMeetingSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
         require: true
+    },
+    message: {
+        type: String,
+        default: ''
+    },
+    signalDate : {
+        type: Date,
+        default: 0
     }
 });
 
