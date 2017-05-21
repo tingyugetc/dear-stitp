@@ -1,22 +1,30 @@
 /*index.css*/
 
-.back{
+.bag{
 	background-image: url('../img/promo-bg.jpg');
-	/*width: 1250px;*/
 	background-size: 100%;
 	height: 150px;
+	text-align: center;
+}
+
+.p_sty{
+	font-size: 22px;
+	height:25px; 
+	line-height:100px; 
+	color: #ffffff;
+}
+
+.p_style{
+	font-size: 20px;
+	height:25px; 
+	line-height:100px; 
+	color: #ffffff;
 }
 
 .img{
 	top: 10%;
 	left: 5%;
-	/*background-image: url('../img/返回.png');
-	width: 32px;
-	height: 32px;*/
 }
-/*.top{
-	margin-top: 30%;
-}*/
 
 .color{
 	background-color: #eeeeee; 
@@ -46,19 +54,11 @@ li {
 }
 
 hr {
-
-	/*color:#ffffff;*/
-
 	border:0;
 	background-color:#ffffff;
 	height:1px;
 }
-/*table tr:nth-child(odd){
-	background-color: #ffffff;
-}
-table tr:nth-child(even){
-	background-color: #efefef;
-}*/
+
 .td_text{
 	text-align: right;
 	margin-left: 5%;
