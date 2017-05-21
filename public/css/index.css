@@ -4,21 +4,6 @@
 	background-image: url('../img/promo-bg.jpg');
 	background-size: 100%;
 	height: 150px;
-	text-align: center;
-}
-
-.p_sty{
-	font-size: 22px;
-	height:25px; 
-	line-height:100px; 
-	color: #ffffff;
-}
-
-.p_style{
-	font-size: 20px;
-	height:25px; 
-	line-height:100px; 
-	color: #ffffff;
 }
 
 .img{
