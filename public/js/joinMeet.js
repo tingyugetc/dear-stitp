@@ -76,11 +76,14 @@ function sendMeetingId() {
 	if(localStorage.getItem("meetingfile")){
 
 		meetingFile.innerHTML = localStorage.getItem("meetingfile");
-		meetingFile.href = localStorage.getItem("meetingfile");
+		// meetingFile.href = localStorage.getItem("meetingfile");
+		console.log(meetingFile);
+		console.log(localStorage.getItem("meetingfile"));
+		console.log(meetingFile.href);		
+		// meetingFile.src = localStorage.getItem("meetingfile");
 	}
 	else
 		meetingFile.innerHTML = "没有可下载文件";
-		meetingFile.href = "";
 }())
 
 document.getElementById("login_btn").onclick = function() {
@@ -94,7 +97,9 @@ document.getElementById("meetingFile").onclick = function() {
 		alert("会议发起者没有上传文件");
 	}
 	else{
-		window.location.href=localStorage.getItem("meetingfile");
+		document.getElementById("meetingFile").href = document.getElementById("")
+		// window.location.href=localStorage.getItem("meetingfile");
+
 	}
 
 
@@ -106,3 +111,5 @@ document.getElementById("meetingFile").onclick = function() {
 // 			localStorage.setItem("meetingname",this.response.data[id].name);
 // 			localStorage.setItem("start_time",this.response.data[id].start_time);
 // 			localStorage.setItem("meetingusername",this.response.data[id].user.username);
+
+"photo_id" : 20120124

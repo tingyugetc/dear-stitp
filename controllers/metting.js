@@ -257,3 +257,10 @@ exports.userSign = function (req, res, next) {
     })
 
 };
+
+exports.userPhoto = function (req, res, next) {
+    // body...
+    var resultPhoto = req.body.file[0];
+
+
+}
