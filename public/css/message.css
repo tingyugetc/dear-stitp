@@ -3,12 +3,32 @@ body {
     font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei","Microsoft YaHei UI","Microsoft YaHei",sans-serif;
 }
 
-.back{
+.bag{
     background-image: url('../img/promo-bg.jpg');
-    /*width: 1250px;*/
     background-size: 100%;
     height: 150px;
-    /*position:fixed;*/
+}
+
+.p_sty{
+    font-style: italic;
+    font-family: Comic Sans MS;
+    font-size: 35px;
+    height:25px; 
+    line-height:50px; 
+    color: #ffffff;
+}
+
+.p_style{
+    font-size: 16px;
+    height:25px; 
+    line-height:60px; 
+    color: #ffffff;
+}
+
+.img{
+    margin-top: 15px;
+    /*top: 20%;*/
+    left: 5%;
 }
 
 .div_middle {
