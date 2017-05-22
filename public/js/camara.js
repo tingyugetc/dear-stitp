@@ -16,8 +16,6 @@
 
 document.getElementById("back").onclick = function () { history.go(-1); };
 
-document.getElementById("pre").onclick = function () { history.go(1); };
-
 (function(){
 	if (localStorage.getItem("userlogo")) {
 		document.getElementById("local_img").src = localStorage.getItem("userlogo");
