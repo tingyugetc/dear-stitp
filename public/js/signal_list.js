@@ -58,11 +58,11 @@ function createTd(obj, userClickId) {
 document.getElementById("back").onclick = function () { history.go(-1); };
 
 function showUser(event) {
-	window.location.href = 'user.html?user_id=' + userId;
 
-	// var id = event.id;
-	// console.log(id);
-	// var userId = document.getElementById(id).getAttribute('user_id');
+	var id = event.id;
+	var userId = document.getElementById(id).getAttribute('user_id');
+
+	window.location.href = 'user.html?user_id=' + userId;
 
 	// var request = new XMLHttpRequest();
 	// request.open("get", "/user/user_info?user_id=" + userId);
