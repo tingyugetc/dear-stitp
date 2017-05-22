@@ -274,7 +274,8 @@ exports.userSign = function (req, res, next) {
                         _id: meetingId
                     }, function (err, meeting) {
                         UserMeeting.findOne({
-                            meeting: meeting
+                            meeting: meeting,
+                            user: userPersonInfo.user
                         }, function (err, userMeeting) {
                             userMeeting.signalDate = new Date();
                             userMeeting.save();
