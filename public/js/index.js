@@ -114,3 +114,8 @@ function sendMeetingId(event) {
 }());
 
 
+document.getElementById("").onclick = function () {
+	// body...
+	window.location.reload();
+}
+
