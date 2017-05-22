@@ -7,6 +7,7 @@ const Meeting = require('../models/metting').Meeting;
 const CodeMsg = require('../utils/code').code;
 const UserMeeting = require('../models/userMeetings').UserMeeting;
 const User = require('../models/user').User;
+const UserPersonInfo = require('../models/userPersonInfo').UserPersonInfo;
 const fs = require('fs');
 const shell = require('shelljs');
 
@@ -249,8 +250,19 @@ exports.userSign = function (req, res, next) {
     }
 
     var result = shell.exec('cd /root/code/Seetaface/SeetaFaceEngine/FaceIdentification && ./build000/src/test/test_face_recognizer.bin /home/dear-stitp/public/upload/' + req.files[0].originalname);
-    result = result.split('\n');
-    console.log(result[result.length - 2]);
+    var resultStd = result.stderr;
+    var pat = new RegExp('success');
+    if (pat.test(resultStd) === true) {
+        result = result.split('\n');
+        result = result[result.length - 2];
+        var photoId = /\d+/.exec(result)[0];
+        console.log(photoId);
+        UserPersonInfo.findOne({
+            photoId: photoId
+        }, function (err, userPersonInfo) {
+            console.log(userPersonInfo);
+        });
+    }
 
     res.json({
         code: 200,

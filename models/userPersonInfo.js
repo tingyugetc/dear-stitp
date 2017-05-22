@@ -69,6 +69,10 @@ const UserPersonInfoSchema = new Schema({
         type: String,
         default: '',
         require: true
+    },
+    photoId: {
+        type: Number,
+        default: 0
     }
 });
 
