@@ -7,6 +7,19 @@
 	text-align: center;
 }
 
+.img{
+	top: 10%;
+	left: 5%;
+}
+
+.color{
+	background-color: #eeeeee; 
+}
+
+.div_footer{
+	text-align: center;
+}
+
 .p_sty{
 	font-style: italic;
 	font-family: Comic Sans MS;
@@ -23,18 +36,6 @@
 	color: #ffffff;
 }
 
-.img{
-	top: 10%;
-	left: 5%;
-}
-
-.color{
-	background-color: #eeeeee; 
-}
-
-.div_footer{
-	text-align: center;
-}
 
 ul {
 
