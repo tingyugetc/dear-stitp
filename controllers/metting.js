@@ -258,7 +258,7 @@ exports.userSign = function (req, res, next) {
         var photoId = /\d+/.exec(result)[0];
         console.log(photoId);
         UserPersonInfo.findOne({
-            photoId: photoId
+            photo_id: photoId
         }, function (err, userPersonInfo) {
             console.log(userPersonInfo);
         });

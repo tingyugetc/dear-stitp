@@ -70,7 +70,7 @@ const UserPersonInfoSchema = new Schema({
         default: '',
         require: true
     },
-    photoId: {
+    photo_id: {
         type: Number,
         default: 0
     }
