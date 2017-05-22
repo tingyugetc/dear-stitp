@@ -333,12 +333,12 @@ exports.userSignalList = function (req, res, next) {
             }
         });
     });
-}
+};
 
 exports.userPhoto = function (req, res, next) {
     // body...
     var resultPhoto = req.body.file[0];
-}
+};
 
 exports.meetingMessage = function (req, res, next) {
     // var meetingmessage = req.body.message;
