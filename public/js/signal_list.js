@@ -58,23 +58,25 @@ function createTd(obj, userClickId) {
 document.getElementById("back").onclick = function () { history.go(-1); };
 
 function showUser(event) {
+
 	var id = event.id;
-	console.log(id);
 	var userId = document.getElementById(id).getAttribute('user_id');
 
-	var request = new XMLHttpRequest();
-	request.open("get", "/user/user_info?user_id=" + userId);
-	request.setRequestHeader('Content-type', 'application/json');
-	// 指定服务端返回的数据类型
-	request.responseType = 'json';
-	// 监听请求完成事件，然后判断响应是否正确
-	request.onload = function (err) {
-		// 响应正确，成功拿到后端的数据
-		if (this.status === 200 && this.response.code === 200) {
+	window.location.href = 'user.html?user_id=' + userId;
+
+	// var request = new XMLHttpRequest();
+	// request.open("get", "/user/user_info?user_id=" + userId);
+	// request.setRequestHeader('Content-type', 'application/json');
+	// // 指定服务端返回的数据类型
+	// request.responseType = 'json';
+	// // 监听请求完成事件，然后判断响应是否正确
+	// request.onload = function (err) {
+	// 	// 响应正确，成功拿到后端的数据
+	// 	if (this.status === 200 && this.response.code === 200) {
 			
-		}
-	};
-	// 发起请求
-	request.send();
+	// 	}
+	// };
+	// // 发起请求
+	// request.send();
 
 }

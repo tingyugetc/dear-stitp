@@ -25,7 +25,7 @@ const UserMeetingSchema = new Schema({
     },
     signalDate : {
         type: Date,
-        default: ''
+        default: new Date(1970)
     }
 });
 
