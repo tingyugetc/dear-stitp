@@ -4,6 +4,10 @@
     getMessage();
 });
 
+document.getElementById("").onclick = function () {
+
+};
+
 
 function getMessage() {
     // body...
@@ -20,11 +24,9 @@ function getMessage() {
                 console.log(this.response.data);
                 this.response.data.forEach(function (obj) {
                     console.log(obj);
-                    createDiv1(obj);
+                    showMeeting(obj);
                     createDiv2(obj);
-
                 })
-
             }
             else
                 alert("没获取数据");
@@ -36,8 +38,13 @@ function getMessage() {
     //'username=' + name
 }
 
-function createDiv1(obj) {
-
+function showMeeting(obj) {
+    var meeting_div = document.getElementById("meeting_show");
+    var p = meeting_div.childNodes;
+    p[0].innerHTML = "会议名称："+obj.meeting.name;
+    p[1].innerHTML = "会议发起者：" + obj.meeting.user.username;
+    p[2].innerHTML = "发起时间：" + obj.meeting.start_time;
+    p[3].innerHTML = "地点：" + obj.meeting.location;
 }
 
 //向前端展示
