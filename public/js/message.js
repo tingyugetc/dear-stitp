@@ -1,3 +1,6 @@
+
+document.getElementById("back").onclick = function () { history.go(-1); };
+
 (function () {
     // var requst = new XMLHttpRequest();
     var urlGetMessage = '/meeting/meetingMessage';

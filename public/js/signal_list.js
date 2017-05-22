@@ -5,7 +5,6 @@
 	var meetingNameEle = document.getElementById("meeting_signal");
 	var meetingName = localStorage.getItem("meetingname");
 	meetingNameEle.innerHTML = meetingName + "的签到列表";
-
 	getSignalList();
 }());
 
@@ -79,4 +78,9 @@ function showUser(event) {
 	// // 发起请求
 	// request.send();
 
+}
+
+document.getElementById("").onclick = function () {
+	// body...
+	window.location.reload();
 }
