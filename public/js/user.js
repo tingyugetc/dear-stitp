@@ -25,7 +25,7 @@ function getData(ele) {
 	}
 }
 
-getData.prototype.Data = function(url) {
+getData.prototype.Data = function() {
 	var request = new XMLHttpRequest();
 	url = '/user/user_info';
 	request.open('GET',url);
@@ -34,7 +34,7 @@ getData.prototype.Data = function(url) {
 	request.onload = function() {
 		if (this.status === 200) {
 			if (this.response.code === 200) {
-
+				console.log(this.response.data);
 				console.log(this.response.data);
 				var td = document.getElementsByClassName("td_text");
 				var img = document.getElementsByName("profile_photo");
@@ -103,7 +103,7 @@ getData.prototype.Data = function(url) {
 	var getText = new getData(ele[0]);
 	var url = "/user/user_info";
 	console.log(getText.Data);
-	// getText.Data();
+	getText.Data();
 
 }());
 
