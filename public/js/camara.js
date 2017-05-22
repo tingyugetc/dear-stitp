@@ -24,9 +24,9 @@ document.getElementById("back").onclick = function () { history.go(-1); };
 
 // userlogo
 
-document.getElementById("btn_submit").onclick = function() {
-  	previewFile();
-}
+// document.getElementById("btn_submit").onclick = function() {
+//   	previewFile();
+// }
 
 
 function sendImg() {
