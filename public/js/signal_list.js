@@ -53,8 +53,6 @@ function createTd(obj, userClickId) {
 
 document.getElementById("back").onclick = function () { history.go(-1); };
 
-document.getElementById("pre").onclick = function () { history.go(1); };
-
 function showUser(event) {
 	// body...
 	// var id=event.target.getAttribute('id');
