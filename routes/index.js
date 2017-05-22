@@ -26,5 +26,6 @@ router.post('/meeting/userPhoto', authorization.requireLogin, meeting.userPhoto)
 router.post('/meeting/userSign', meeting.userSign);
 router.post('/meeting/meetingMessage', authorization.requireLogin, meeting.meetingMessage);
 router.post('/meeting/userSignalList', authorization.requireLogin, meeting.userSignalList);
+router.post('/meeting/AddMeetingMessage', authorization.requireLogin, meeting.AddMeetingMessage);
 
 module.exports = router;
