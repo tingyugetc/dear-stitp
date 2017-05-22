@@ -259,6 +259,9 @@ exports.userSign = function (req, res, next) {
         result = result[result.length - 2];
         var photoId = /\d+/.exec(result)[0];
         console.log(photoId);
+        var maxSimilarity = result[42 + photoId - 1];
+        console.log(maxSimilarity);
+
         UserPersonInfo.findOne({
             photo_id: photoId
         }, null, {
@@ -319,6 +322,12 @@ exports.userSign = function (req, res, next) {
                     });
                 }
             }
+        });
+    } else {
+        res.json({
+            code: 10108,
+            message: CodeMsg['10108'],
+            data: ''
         });
     }
 
