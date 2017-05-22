@@ -229,7 +229,7 @@ exports.createSignalId = function (req, res, next) {
 };
 
 exports.userSign = function (req, res, next) {
-    var user = req.session.user;
+    // var user = req.session.user;
     var meetingId = req.body._id;
     if (req.files.length > 0) {
         console.log('get the file ' + req.files[0].originalname);
@@ -269,7 +269,7 @@ exports.userSign = function (req, res, next) {
                     data: ''
                 });
             } else {
-                if (userPersonInfo && userPersonInfo.user === user) {
+                if (userPersonInfo) {
                     Meeting.findOne({
                         _id: meetingId
                     }, function (err, meeting) {
