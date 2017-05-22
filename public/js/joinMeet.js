@@ -24,8 +24,6 @@
 
 document.getElementById("back").onclick = function () { history.go(-1); };
 
-document.getElementById("pre").onclick = function () { history.go(1); };
-
 function sendMeetingId() {
 	// body...
 	var meetingid = localStorage.getItem("meetingid");
