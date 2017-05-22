@@ -1,13 +1,6 @@
 // index.js
 // const BASE_SITE = "127.0.0.0:3000"
 
-document.getElementById("back").onclick = function () { history.go(-1); };
-<<<<<<< HEAD
-
-//document.getElementById("pre").onclick = function () { history.go(1); };
-
-=======
->>>>>>> 6d5ace600a18fad1b1af4977c186be80717df39d
 function getJson() {
 	// body...
 	var meeting = document.getElementsByTagName("table");
