@@ -259,16 +259,51 @@ exports.userSign = function (req, res, next) {
         console.log(photoId);
         UserPersonInfo.findOne({
             photo_id: photoId
+        }, null, {
+            populate: 'user'
         }, function (err, userPersonInfo) {
-            console.log(userPersonInfo);
+            if (err) {
+                res.json({
+                    code: 500,
+                    message: CodeMsg['500'],
+                    data: ''
+                });
+            } else {
+                if (userPersonInfo && userPersonInfo.user === user) {
+                    Meeting.findOne({
+                        _id: meetingId
+                    }, function (err, meeting) {
+                        UserMeeting.findOne({
+                            meeting: meeting
+                        }, function (err, userMeeting) {
+                            if (userMeeting.signalDate) {
+                                res.json({
+                                    code: 10106,
+                                    message: CodeMsg['10106'],
+                                    data: ''
+                                })
+                            } else {
+                                userMeeting.signalDate = new Date();
+                                userMeeting.save();
+
+                                res.json({
+                                    code: 200,
+                                    message: CodeMsg['200'],
+                                    data: ''
+                                });
+                            }
+                        });
+                    });
+                } else {
+                    res.json({
+                        code: 10105,
+                        message: CodeMsg['10105'],
+                        data: ''
+                    });
+                }
+            }
         });
     }
-
-    res.json({
-        code: 200,
-        message: CodeMsg['200'],
-        data: ''
-    })
 
 };
 
