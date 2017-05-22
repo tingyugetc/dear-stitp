@@ -259,6 +259,9 @@ exports.userSign = function (req, res, next) {
         result = result[result.length - 2];
         var photoId = /\d+/.exec(result)[0];
         console.log(photoId);
+        var maxSimilarity = result[42 + photoId - 1];
+        console.log(maxSimilarity);
+
         UserPersonInfo.findOne({
             photo_id: photoId
         }, null, {
@@ -271,14 +274,21 @@ exports.userSign = function (req, res, next) {
                     data: ''
                 });
             } else {
-                if (userPersonInfo && userPersonInfo.user._id === userId) {
+                if (userPersonInfo && userPersonInfo.user._id == userId) {
                     Meeting.findOne({
                         _id: meetingId
                     }, function (err, meeting) {
+                        if (meeting.signal_id != code) {
+                            res.json({
+                                code: 10107,
+                                message: CodeMsg['10107'],
+                                data: ''
+                            });
+                        }
+
                         UserMeeting.findOne({
                             meeting: meeting,
-                            user: userPersonInfo.user,
-                            code: code
+                            user: userPersonInfo.user
                         }, function (err, userMeeting) {
                             if (err) {
                                 res.json({
@@ -312,6 +322,12 @@ exports.userSign = function (req, res, next) {
                     });
                 }
             }
+        });
+    } else {
+        res.json({
+            code: 10108,
+            message: CodeMsg['10108'],
+            data: ''
         });
     }
 

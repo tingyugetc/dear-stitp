@@ -24,10 +24,10 @@ document.getElementById("back").onclick = function () { history.go(-1); };
 
 // userlogo
 
-document.getElementById("btn_submit").onclick = function() {
-  	// previewFile();
-  	window.location.href = "meetingMessage.html"
-}
+// document.getElementById("btn_submit").onclick = function() {
+//   	// previewFile();
+//   	window.location.href = "meetingMessage.html"
+// }
 
 
 function sendImg() {
