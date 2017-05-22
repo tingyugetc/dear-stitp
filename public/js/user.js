@@ -25,9 +25,12 @@ function getData(ele) {
 	}
 }
 
-getData.prototype.Data = function() {
+getData.prototype.Data = function(user_id) {
 	var request = new XMLHttpRequest();
 	url = '/user/user_info';
+	if (user_id != 0) {
+		url = url + '?user_id=' + user_id;
+	}
 	request.open('GET',url);
 	request.setRequestHeader('content','application/json');
 	request.responseType = 'json';
@@ -102,8 +105,10 @@ getData.prototype.Data = function() {
 	ele = document.getElementsByTagName("table");
 	var getText = new getData(ele[0]);
 	var url = "/user/user_info";
-	console.log(getText.Data);
-	getText.Data();
+
+	var user_id = getQueryString('user_id') || 0;
+
+	getText.Data(user_id);
 
 }());
 
@@ -125,6 +130,15 @@ document.getElementById("indrduce_click").onclick = function() {
 	var body_text = localStorage.getItem("userresume");
 	setText(title_text,body_text);
 };
+
+function getQueryString(name) {
+	var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+	var r = window.location.search.substr(1).match(reg);
+	if (r !== null) {
+		return unescape(r[2]);
+	}
+	return null;
+}
 
 // area:"1.算法网络经济<br />包括在群智感知、数据中心资源分配、移动社交网络中的市场机制设计<br>2.无线自组网和无线传感网<br>包括路由协议、拓扑控制、拥塞控制、数据收集、服务质量保证等<br>3.无线网络和移动计算<br>包括覆盖层网络体系结构、群智感知技术、容迟网络体系结构、社会移动模型等<br>4.物联网技术及其应用<br>包括物联网体系结构、异构物联网融合、物联网在应急通信、远程医疗等方面的应用<br><br>我可在信息网络(0810Z2)专业招收博士研究生,在0835软件工程专业招收学术型硕士研究生，在计算机技术(085211)、软件工程(085212)招收全日制专业学位硕士研究生。<br />"
 // degree:"工学博士"

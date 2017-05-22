@@ -276,22 +276,14 @@ exports.userSign = function (req, res, next) {
                         UserMeeting.findOne({
                             meeting: meeting
                         }, function (err, userMeeting) {
-                            if (userMeeting.signalDate) {
-                                res.json({
-                                    code: 10106,
-                                    message: CodeMsg['10106'],
-                                    data: ''
-                                })
-                            } else {
-                                userMeeting.signalDate = new Date();
-                                userMeeting.save();
+                            userMeeting.signalDate = new Date();
+                            userMeeting.save();
 
-                                res.json({
-                                    code: 200,
-                                    message: CodeMsg['200'],
-                                    data: ''
-                                });
-                            }
+                            res.json({
+                                code: 200,
+                                message: CodeMsg['200'],
+                                data: ''
+                            });
                         });
                     });
                 } else {
