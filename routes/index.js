@@ -18,16 +18,12 @@ router.get('/user/user_info_copy', user.user_info_copy);
 router.post('/meeting/create', meeting.create);
 router.get('/meeting/findList', meeting.findList);
 router.get('/meeting/findStartedList', authorization.requireLogin, meeting.findStartedList);
-router.get('/meeting/findJoinedList', authorization.requireLogin, meeting.findJoinedLnist);
+router.get('/meeting/findJoinedList', authorization.requireLogin, meeting.findJoinedList);
 router.get('/meeting/getMeeting', authorization.requireLogin, meeting.getMeeting);
 router.post('/meeting/createSignalId', authorization.requireLogin, meeting.createSignalId);
 router.post('/meeting/joinMeeting', authorization.requireLogin, meeting.joinMeeting);
-<<<<<<< HEAD
-router.post('/meeting/userSign', authorization.requireLogin, meeting.userSign);
 router.post('/meeting/userPhoto', authorization.requireLogin, meeting.userPhoto);
-=======
 router.post('/meeting/userSign', meeting.userSign);
 router.post('/meeting/meetingMessage', authorization.requireLogin, meeting.meetingMessage);
->>>>>>> a4528299cc3ab4638b6d19bb96f42cf386c95a19
 
 module.exports = router;
