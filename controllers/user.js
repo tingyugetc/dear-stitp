@@ -147,7 +147,7 @@ exports.user_info = function (req, res, next) {
         }, function(err, user) {
             console.log(user);
             if (user) {
-                UserInfo.findOne({
+                UserInfo.find({
                     user: user
                 }, function (err, userInfo) {
                     res.json({
