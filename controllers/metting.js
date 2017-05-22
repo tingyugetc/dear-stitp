@@ -337,9 +337,9 @@ exports.userPhoto = function (req, res, next) {
 exports.meetingMessage = function (req, res, next) {
     // var meetingmessage = req.body.message;
     // var userid = req.body.userId;
-    var meetingid = req.body.meetingId;
+    var meetingId = req.body.meetingId;
     Meeting.findOne({
-        _id: meetingid
+        _id: meetingId
     }, function (err, meeting) {
         UserMeeting.find({
             meeting:meeting
@@ -364,5 +364,28 @@ exports.meetingMessage = function (req, res, next) {
 };
 
 exports.AddMeetingMessage = function (req, res, next) {
+    var meetingId = req.body.meeting_id;
+    var user = req.session.user;
+    var message = req.body.message;
 
+    Meeting.findOne({
+        _id: meetingId
+    }, function(err, meeting) {
+        UserMeeting.findOne({
+            meeting: meeting,
+            user: user
+        }, function(err, userMeeting) {
+            if (userMeeting && userMeeting.signalDate > new Date(1970)) {
+                // 可以留言了
+                userMeeting.message = message;
+                userMeeting.save();
+
+                res.json({
+                    code: 200,
+                    message: CodeMsg['200'],
+                    data: ''
+                });
+            }
+        });
+    });
 };
