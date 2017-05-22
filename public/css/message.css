@@ -22,7 +22,7 @@ body {
 }
 
 .div_small {
-    padding: 2% 7%;
+    padding: 1% 5%;
 }
 
 h4 {
@@ -41,8 +41,13 @@ h4 {
     content: "";
     width: 90px;
     height: 1px;
-    background: #f4645f;
+    background: #e67e22;
     position: absolute;
     left: 0;
     bottom: -1px;
+}
+
+.div_small2{
+    padding: 2% 7%;
+
 }
