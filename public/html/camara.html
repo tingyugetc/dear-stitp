@@ -49,7 +49,6 @@
 			</div>
 			<!-- <canvas id="canvas" width="640" height="480"></canvas> -->
 		</div>
-
 		</div>
 	</form>
 </div>
@@ -60,28 +59,7 @@
 	function wave2(name) {
 		alert(name);
     	var imge = document.getElementById("pic");
-    	// var aname = file:///storage/emulated/0/temp.png
-    	var aname =  "file://" + name;
-    	 // var aname =  "file://" + name;
 
-    	// if (true) {}
-    	imge.src = aname;
-    	if (aname == "file:///storage/emulated/0/temp.png") {
-    		imgfile = aname.files[0];
-    		console.log(imgfile.length);
-    	}
-    	else
-    		console.log("aname is not file:///storage/emulated/0/temp.png");
-
-    	var imgfile = aname;
-    	var reader = new FileReader();
-	    reader.onload = (function(imge) { 
-	      return function(e) { 
-	        imge.src = e.target.result; 
-	      }; 
-	    })(img);
-	    reader.readAsDataURL(file);
-    	// console.log("")
 	}
 </script>
 <script type="text/javascript" src="../js/camara.js"></script>

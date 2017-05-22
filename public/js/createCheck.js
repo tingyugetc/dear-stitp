@@ -7,10 +7,9 @@ document.getElementById("signal_list_btn").onclick = function () {
 	window.location.href = "signal_list.html";
 };
 
-
 document.getElementById("back").onclick = function () { history.go(-1); };
 
-document.getElementById("pre").onclick = function () { history.go(1); };
+// document.getElementById("pre").onclick = function () { history.go(1); };
 
 function sendMeetingId() {
 	// body...

@@ -113,8 +113,6 @@ function sendMeetingId(event) {
 
 (function() {
 	getJson();
-
-	// console.log(localStorage.getItem('username'));
 }());
 
 

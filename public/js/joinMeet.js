@@ -116,4 +116,4 @@ document.getElementById("meetingFile").onclick = function() {
 // 			localStorage.setItem("start_time",this.response.data[id].start_time);
 // 			localStorage.setItem("meetingusername",this.response.data[id].user.username);
 
-"photo_id" : 20120124
+// "photo_id" : 20120124
