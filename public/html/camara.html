@@ -64,11 +64,12 @@
 
   	function gotoSend() {
   		var code = document.getElementById('signal_id').value;
-  		console.log(code);
-  		// nativeMethod.toSendPost(
-  			// localStorage.getItem('meetingid'),
-  			// localStorage.getItem('userid')
-  		// );
+  		// console.log(code);
+  		nativeMethod.toSendPost(
+  			localStorage.getItem('meetingid'),
+  			localStorage.getItem('userid'),
+  			code
+  		);
   	}
 
 	function wave2(name) {
