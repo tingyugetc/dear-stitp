@@ -73,7 +73,5 @@ function createDiv2(obj) {
 
     var div_message = document.getElementById("div_message");
     div_message.getElementsByTagName('tbody')[0].appendChild(tr);
-
-
 }
 

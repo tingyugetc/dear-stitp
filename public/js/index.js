@@ -1,6 +1,5 @@
 // index.js
 // const BASE_SITE = "127.0.0.0:3000"
-
 function getJson() {
 	// body...
 	var meeting = document.getElementsByTagName("table");
@@ -112,8 +111,6 @@ function sendMeetingId(event) {
 
 (function() {
 	getJson();
-
-	// console.log(localStorage.getItem('username'));
 }());
 
 

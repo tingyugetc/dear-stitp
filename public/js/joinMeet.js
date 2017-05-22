@@ -24,8 +24,6 @@
 
 document.getElementById("back").onclick = function () { history.go(-1); };
 
-document.getElementById("pre").onclick = function () { history.go(1); };
-
 function sendMeetingId() {
 	// body...
 	var meetingid = localStorage.getItem("meetingid");
@@ -115,5 +113,4 @@ document.getElementById("meetingFile").onclick = function() {
 // 			localStorage.setItem("meetingname",this.response.data[id].name);
 // 			localStorage.setItem("start_time",this.response.data[id].start_time);
 // 			localStorage.setItem("meetingusername",this.response.data[id].user.username);
-
 

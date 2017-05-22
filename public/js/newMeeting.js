@@ -3,8 +3,6 @@
 
 	document.getElementById("back").onclick = function () { history.go(-1); };
 
-	document.getElementById("pre").onclick = function () { history.go(1); };
-
 	function getDate() {
 		var name = document.getElementById("input_name");
 		var address = document.getElementById("input_address");

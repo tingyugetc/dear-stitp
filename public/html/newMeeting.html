@@ -12,19 +12,16 @@
 	<title>newMeeting</title>
 </head>
 <body>
-<div>
-	<img class="img-responsive img-rounded" src="../img/newMetting.jpg" width="100%"> 
+<div  class="bag">
+	<img src="../img/返回.png" id="back" class="img glyphicon">
+	<div style="text-align: center;">
+		<p class="p_sty">New a Meeting</p>
+		<p class="p_style">添加你的会议基本信息</p>
+	</div>
+	<!-- <img src="../img/返回.png" id="back" class="img glyphicon"> -->
 </div>
-
-<div class = "first-div">
-	<div style="font-size: 20px">
-		<!--<botton id = "back"></botton>-->
-		<span class="glyphicon glyphicon-arrow-left" id="back"></span>
-	</div>
-	<div style="font-size: 20px">
-		<span class="glyphicon glyphicon-arrow-right" id="pre"></span>
-	</div>
-	<form action="" method="post" id="form_data">
+<div class = "first-div div_white">
+	<form method="post" id="form_data" style="width: 80%; margin-left: 10%;">
 		<div class="div_big">
 			<div class="form-group">
 				<div class="input-group col-md-3">
@@ -45,30 +42,23 @@
 			<div class="form-group">
 
 				<label for="input_date" class="col-md-1">* 会议时间：</label>
-				<div class="input-group date form_datetime col-md-3" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd p HH:ii">
-
+				<div class="input-group date form_datetime col-md-3" data-date="2017-05-01T05:25:07Z" data-date-format="yyyy-mm-dd p HH:ii">
 					<input class="form-control" size="12" type="text" value="" id="input_date" readonly>
 					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 				</div>
 			</div>
-
 			<div>
-		    	
 				<div class="input-group col-md-3">
 					<label for="input_file" class="col-md-1">会议文件：</label>
-
-					<!-- <input class="form-control" size="12" type="text" value="" id = "input_address"> -->
-					<!-- <textarea class="form-control" size="12" type="text" id = "input_describe"></textarea> -->
-
 					<input class="form-control" size="12" type="file" value="" name="Meetingfiles" id="input_file"  style="display: none">
-					<button type="button" class="btn btn-primary btn-block">选择文件</button>
+					<button type="button" class="btn btn-block" style="background-color: #59b95d;color: #ffffff;">选择文件</button>
 				</div>
 			</div>
 		</div>
 
 		<div>
 
-			<button type="button" class="btn btn-lg btn-block color" id = "login_btn">创建会议</button>
+			<button type="button" class="btn btn-lg btn-block color" id = "login_btn" style="background-color: #428bca;">创建会议</button>
 
 		</div>
 

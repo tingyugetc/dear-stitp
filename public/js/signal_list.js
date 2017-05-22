@@ -14,7 +14,7 @@ function getSignalList(argument) {
 	var userClickId = 0;
 	console.log(meetingid);
 	var request = new XMLHttpRequest();
-	url = "";
+	url = "/meeting/userSign";
 	request.open("POST", url);
 	request.responseType = "json";
 	request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -52,8 +52,6 @@ function createTd(obj, userClickId) {
 
 
 document.getElementById("back").onclick = function () { history.go(-1); };
-
-document.getElementById("pre").onclick = function () { history.go(1); };
 
 function showUser(event) {
 	// body...
