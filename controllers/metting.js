@@ -7,6 +7,7 @@ const Meeting = require('../models/metting').Meeting;
 const CodeMsg = require('../utils/code').code;
 const UserMeeting = require('../models/userMeetings').UserMeeting;
 const User = require('../models/user').User;
+const UserPersonInfo = require('../models/userPersonInfo').UserPersonInfo;
 const fs = require('fs');
 const shell = require('shelljs');
 
@@ -249,14 +250,60 @@ exports.userSign = function (req, res, next) {
     }
 
     var result = shell.exec('cd /root/code/Seetaface/SeetaFaceEngine/FaceIdentification && ./build000/src/test/test_face_recognizer.bin /home/dear-stitp/public/upload/' + req.files[0].originalname);
-    result = result.split('\n');
-    console.log(result[result.length - 2]);
+    var resultStd = result.stderr;
+    var pat = new RegExp('success');
+    if (pat.test(resultStd) === true) {
+        result = result.split('\n');
+        result = result[result.length - 2];
+        var photoId = /\d+/.exec(result)[0];
+        console.log(photoId);
+        UserPersonInfo.findOne({
+            photo_id: photoId
+        }, null, {
+            populate: 'user'
+        }, function (err, userPersonInfo) {
+            if (err) {
+                res.json({
+                    code: 500,
+                    message: CodeMsg['500'],
+                    data: ''
+                });
+            } else {
+                if (userPersonInfo && userPersonInfo.user === user) {
+                    Meeting.findOne({
+                        _id: meetingId
+                    }, function (err, meeting) {
+                        UserMeeting.findOne({
+                            meeting: meeting
+                        }, function (err, userMeeting) {
+                            if (userMeeting.signalDate) {
+                                res.json({
+                                    code: 10106,
+                                    message: CodeMsg['10106'],
+                                    data: ''
+                                })
+                            } else {
+                                userMeeting.signalDate = new Date();
+                                userMeeting.save();
 
-    res.json({
-        code: 200,
-        message: CodeMsg['200'],
-        data: ''
-    })
+                                res.json({
+                                    code: 200,
+                                    message: CodeMsg['200'],
+                                    data: ''
+                                });
+                            }
+                        });
+                    });
+                } else {
+                    res.json({
+                        code: 10105,
+                        message: CodeMsg['10105'],
+                        data: ''
+                    });
+                }
+            }
+        });
+    }
 
 };
 
