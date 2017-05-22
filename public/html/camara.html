@@ -10,48 +10,51 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-
+<div class="bag">
+	<img src="../img/返回.png" id="back" class="img glyphicon">
+	<!-- <div style="margin: 0 auto;text-align: center;color: #ffffff;"> -->
+	<div style="text-align: center;">
+		<p class="p_sty">Meeting Home</p>
+		<p class="p_style">最近会议日程</p>
+	</div>
+	
+	<!-- </div> -->
+</div>
 
 <div class="container first-div">
-	<div style="font-size: 20px">
-		<!--<botton id = "back"></botton>-->
-		<span class="glyphicon glyphicon-arrow-left" id="back"></span>
-	</div>
-	<div>
-		<span class="glyphicon glyphicon-arrow-right" id="pre"></span>
-	</div>
-	<form>
-		<div class="row" style="margin-top: 30%">
-			<div class="col-xs-5" style="margin-left: 30%">
+<div style="background-color: #ffffff;">
+	<form class="div_kuang">
+		<div class="row" style="margin-top: 19%">
+			<div class="col-xs-5 col-xs-offset-1" style="margin-top: 7%">
 				<img src="../img/19970058.jpg" id="local_img"  class="img-responsive img-thumbnail">
 			</div>
-		</div>
-		<div class="row" style="margin-top: 8%;">
-			<div class="col-xs-5"  id="div_show" style="margin-left: 30%"> 
-				<img src="" id="pic"  class="img-responsive img-thumbnail">
+			<div class="col-xs-5"  id="div_show" style="margin-top: 7%"> 
+				<img src="../img/photo.png" id="pic"  class="img-responsive img-thumbnail">
 			</div>
-		</div>	
-		<div class="row" style="margin-top: 8%">
+		</div>
+		<!-- <div class="row" style="margin-top: 4%;">
+			<div class="col-xs-4"  id="div_show" style="margin-left: 30%"> 
+				<img src="../img/19970058.jpg" id="pic"  class="img-responsive img-thumbnail">
+			</div>
+		</div>	 -->
+		<!-- <div class="row" style="margin-top: 8%">
 			<div style="width: 90%;margin-left: 5%;">
 				<button type="button" class="btn btn-default btn-lg btn-block" id="picture" onclick="gotoActivity('camara')">点击拍照</button>
 			</div>
-			<!-- <canvas id="canvas" width="640" height="480"></canvas> -->
-		</div>
-		<div class="row" style="margin-top: 15%">
+			 <canvas id="canvas" width="640" height="480"></canvas> 
+		</div> -->
+		<div class="row" style="margin-top: 8%">
 			<!-- <div><button id='picture'>拍照</button></div> -->
-			<input type="text" class="form-control" name="" id="signal_id" placeholder="请输入签到码" style="width: 90%;margin-left: 5%">
+			<input type="text" class="form-control" name="" id="signal_id" placeholder="请输入签到码" style="width: 90%;margin-left: 5%;padding: 21px;font-size: 18px">
 
-
-			<input type="file" class="form-control" name="" id="file_input" placeholder="请输入签到码" style="width: 90%;margin-left: 5%">
-
-			<div style="width: 90%;margin-left: 5%;margin-top: 5%;">
+			<div style="width: 90%;margin-left: 5%;margin-top: 5%;margin-bottom: 7%">
 				<button type="button" class="btn btn-primary btn-lg btn-block" id="btn_submit">确认签到</button>
 			</div>
 			<!-- <canvas id="canvas" width="640" height="480"></canvas> -->
 		</div>
-
 		</div>
 	</form>
+</div>
 </div>
 <script type="text/javascript">
   	function gotoActivity (activity) {
@@ -60,28 +63,7 @@
 	function wave2(name) {
 		alert(name);
     	var imge = document.getElementById("pic");
-    	// var aname = file:///storage/emulated/0/temp.png
-    	var aname =  "file://" + name;
-    	 // var aname =  "file://" + name;
 
-    	// if (true) {}
-    	imge.src = aname;
-    	if (aname == "file:///storage/emulated/0/temp.png") {
-    		imgfile = aname.files[0];
-    		console.log(imgfile.length);
-    	}
-    	else
-    		console.log("aname is not file:///storage/emulated/0/temp.png");
-
-    	var imgfile = aname;
-    	var reader = new FileReader();
-	    reader.onload = (function(imge) { 
-	      return function(e) { 
-	        imge.src = e.target.result; 
-	      }; 
-	    })(img);
-	    reader.readAsDataURL(file);
-    	// console.log("")
 	}
 </script>
 <script type="text/javascript" src="../js/camara.js"></script>

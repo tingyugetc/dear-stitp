@@ -142,11 +142,12 @@ exports.user_info = function (req, res, next) {
         });
     } else {
         // 查看他人的信息
-        User.find({
+        User.findOne({
             _id: user_id
         }, function(err, user) {
+            console.log(user);
             if (user) {
-                UserInfo.find({
+                UserInfo.findOne({
                     user: user
                 }, function (err, userInfo) {
                     res.json({

@@ -307,12 +307,40 @@ exports.userSign = function (req, res, next) {
 
 };
 
+exports.userSignalList = function (req, res, next) {
+    var meetingid = req.body.meetingId;
+    Meeting.findOne({
+        _id: meetingid
+    }, function (err, meeting) {
+        UserMeeting.find({
+            meeting:meeting,
+            signalDate: {$gt: new Date(1970)}
+        }, null, {
+            populate: 'user'
+        }, function (err, meetings) {
+            if(err) {
+                res.json({
+                    code:10104,
+                    message: CodeMsg['10104'],
+                    data:''
+                })
+            }
+            else{
+                console.log(meetings);
+                res.json({
+                    code: 200,
+                    message: CodeMsg[200],
+                    data: meetings
+                })
+            }
+        });
+    });
+};
+
 exports.userPhoto = function (req, res, next) {
     // body...
     var resultPhoto = req.body.file[0];
-
-
-}
+};
 
 exports.meetingMessage = function (req, res, next) {
     // var meetingmessage = req.body.message;
