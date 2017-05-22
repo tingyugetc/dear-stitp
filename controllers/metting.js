@@ -271,14 +271,21 @@ exports.userSign = function (req, res, next) {
                     data: ''
                 });
             } else {
-                if (userPersonInfo && userPersonInfo.user._id === userId) {
+                if (userPersonInfo && userPersonInfo.user._id == userId) {
                     Meeting.findOne({
                         _id: meetingId
                     }, function (err, meeting) {
+                        if (meeting.signal_id != code) {
+                            res.json({
+                                code: 10107,
+                                message: CodeMsg['10107'],
+                                data: ''
+                            });
+                        }
+
                         UserMeeting.findOne({
                             meeting: meeting,
-                            user: userPersonInfo.user,
-                            code: code
+                            user: userPersonInfo.user
                         }, function (err, userMeeting) {
                             if (err) {
                                 res.json({
