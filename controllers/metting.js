@@ -337,12 +337,14 @@ exports.userPhoto = function (req, res, next) {
 exports.meetingMessage = function (req, res, next) {
     // var meetingmessage = req.body.message;
     // var userid = req.body.userId;
-    var meetingId = req.body.meetingId;
+    var meetingId = req.body.meeting_id;
     Meeting.findOne({
         _id: meetingId
     }, function (err, meeting) {
         UserMeeting.find({
-            meeting:meeting
+            meeting: meeting
+        }, null, {
+            populate: 'user'
         }, function (err, meetings) {
             if(err) {
                 res.json({
