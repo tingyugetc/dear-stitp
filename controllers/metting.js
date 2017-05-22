@@ -309,13 +309,14 @@ exports.userSign = function (req, res, next) {
 
 exports.userSignalList = function (req, res, next) {
     var meetingid = req.body.meetingId;
-    var meetingSignalDate = req.body.signalDate;
     Meeting.findOne({
         _id: meetingid
     }, function (err, meeting) {
         UserMeeting.find({
             meeting:meeting,
-            signalDate:meetingSignalDate
+            signalDate: {$gt: new Date(1970)}
+        }, null, {
+            populate: 'user'
         }, function (err, meetings) {
             if(err) {
                 res.json({
@@ -325,6 +326,7 @@ exports.userSignalList = function (req, res, next) {
                 })
             }
             else{
+                console.log(meetings);
                 res.json({
                     code: 200,
                     message: CodeMsg[200],
