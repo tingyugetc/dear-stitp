@@ -229,8 +229,10 @@ exports.createSignalId = function (req, res, next) {
 };
 
 exports.userSign = function (req, res, next) {
-    var user = req.session.user;
+    var userId = req.body.user_id;
     var meetingId = req.body._id;
+    var code = req.body.code;
+
     if (req.files.length > 0) {
         console.log('get the file ' + req.files[0].originalname);
 
@@ -269,21 +271,37 @@ exports.userSign = function (req, res, next) {
                     data: ''
                 });
             } else {
-                if (userPersonInfo && userPersonInfo.user === user) {
+                if (userPersonInfo && userPersonInfo.user._id === userId) {
                     Meeting.findOne({
                         _id: meetingId
                     }, function (err, meeting) {
                         UserMeeting.findOne({
-                            meeting: meeting
+                            meeting: meeting,
+                            user: userPersonInfo.user,
+                            code: code
                         }, function (err, userMeeting) {
-                            userMeeting.signalDate = new Date();
-                            userMeeting.save();
+                            if (err) {
+                                res.json({
+                                    code: 500,
+                                    message: CodeMsg['500'],
+                                    data: ''
+                                });
+                            } else if (userMeeting) {
+                                userMeeting.signalDate = new Date();
+                                userMeeting.save();
 
-                            res.json({
-                                code: 200,
-                                message: CodeMsg['200'],
-                                data: ''
-                            });
+                                res.json({
+                                    code: 200,
+                                    message: CodeMsg['200'],
+                                    data: ''
+                                });
+                            } else {
+                                res.json({
+                                    code: 404,
+                                    message: CodeMsg['404'],
+                                    data: ''
+                                });
+                            }
                         });
                     });
                 } else {
