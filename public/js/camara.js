@@ -56,7 +56,6 @@ function sendImg() {
 document.getElementById("btn_message").onclick = function () {
 	// body...
 	window.location.href = "meetingMessage.html";
-	alert("请稍后，正在进行比对")
 }
 
 
