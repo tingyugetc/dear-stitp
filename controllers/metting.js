@@ -80,14 +80,29 @@ exports.findStartedList = function (req, res, next) {
         sort: '-start_time',
         populate: 'user'
     }, function (err, meetings) {
-        meetings.forEach(function (element) {
-            element['username'] = element.user.username;
-        });
-        res.json({
-            code: 200,
-            message: CodeMsg['200'],
-            data: meetings
-        });
+        if (err) {
+            res.json({
+                code: 500,
+                message: CodeMsg['500'],
+                data: ''
+            });
+        } else if (meetings.length > 0) {
+            meetings.forEach(function (element) {
+                element['username'] = element.user.username;
+            });
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: meetings
+            });
+        } else {
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: []
+            });
+        }
+
     });
 };
 
@@ -100,17 +115,32 @@ exports.findJoinedList = function (req, res, next) {
         limit: 20,
         populate: ['meeting', 'user', 'originator']
     }, function (err, userMeetings) {
-        var meetings = userMeetings.map(function (element) {
-            var meeting = element.meeting;
-            meeting.user = element.originator;
-            return meeting;
-        });
+        if (err) {
+            res.json({
+                code: 500,
+                message: CodeMsg['500'],
+                data: ''
+            });
+        } else if (userMeetings.length > 0) {
+            var meetings = userMeetings.map(function (element) {
+                var meeting = element.meeting;
+                meeting.user = element.originator;
+                return meeting;
+            });
 
-        res.json({
-            code: 200,
-            message: CodeMsg['200'],
-            data: meetings
-        });
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: meetings
+            });
+        } else {
+            res.json({
+                code: 200,
+                message: CodeMsg['200'],
+                data: []
+            });
+        }
+
     });
 };
 
