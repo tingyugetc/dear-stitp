@@ -80,7 +80,7 @@ function showUser(event) {
 
 }
 
-document.getElementById("").onclick = function () {
+document.getElementById("flush").onclick = function () {
 	// body...
 	window.location.reload();
 }
