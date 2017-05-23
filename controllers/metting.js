@@ -388,17 +388,17 @@ exports.meetingMessage = function (req, res, next) {
         }, function (err, meetings) {
             if(err) {
                 res.json({
-                    code:10104,
+                    code: 10104,
                     message: CodeMsg['10104'],
                     data:''
-                })
+                });
             }
             else{
                 res.json({
                     code: 200,
                     message: CodeMsg[200],
                     data: meetings
-                })
+                });
             }
         });
     });
@@ -417,8 +417,7 @@ exports.AddMeetingMessage = function (req, res, next) {
             meeting: meeting,
             user: user
         }, function(err, userMeeting) {
-            if (userMeeting && userMeeting.signalDate > new Date(1970)) {
-                // 可以留言了
+            if (userMeeting) {
                 userMeeting.message = message;
                 userMeeting.save();
 
