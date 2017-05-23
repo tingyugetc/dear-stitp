@@ -86,7 +86,7 @@ exports.findStartedList = function (req, res, next) {
                 message: CodeMsg['500'],
                 data: ''
             });
-        } else if (meetings) {
+        } else if (meetings.length > 0) {
             meetings.forEach(function (element) {
                 element['username'] = element.user.username;
             });
@@ -121,7 +121,7 @@ exports.findJoinedList = function (req, res, next) {
                 message: CodeMsg['500'],
                 data: ''
             });
-        } else if (userMeetings) {
+        } else if (userMeetings.length > 0) {
             var meetings = userMeetings.map(function (element) {
                 var meeting = element.meeting;
                 meeting.user = element.originator;
