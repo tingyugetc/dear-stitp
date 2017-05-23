@@ -53,6 +53,11 @@ function sendImg() {
 
 }
 
+document.getElementById("btn_message").onclick = function () {
+	// body...
+	window.location.href = "meetingMessage.html"
+}
+
 // function showImg() {
 // 	// body...
 // 	var img = document.getElementById("updata_img");
@@ -60,7 +65,4 @@ function sendImg() {
 
 // }
 
-function getResult(argument) {
-	// body...	
-}
 

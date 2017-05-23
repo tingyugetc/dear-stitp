@@ -80,8 +80,10 @@ function createDiv2(obj) {
     var nodep = document.createTextNode(obj.message);
     p.appendChild(nodep);
     // h4.setAttribute("class", "title");
+    var date = (new Date()).toLocaleString();
+    // date = date.
     var footer = document.createElement("footer");
-    var nodeTime = document.createTextNode(obj.signalDate);
+    var nodeTime = document.createTextNode(date);
     footer.appendChild(nodeTime);
     blockquote.appendChild(p);
     blockquote.appendChild(footer);

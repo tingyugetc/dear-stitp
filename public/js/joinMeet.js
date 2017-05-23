@@ -67,17 +67,17 @@ function sendMeetingId() {
 (function showMeeting() {
 	// body...
 	var organizer = document.getElementById("organizer");
-	organizer.innerHTML = localStorage.getItem("meetingusername");
+	organizer.innerHTML = " 发起人： " + localStorage.getItem("meetingusername");
 	var meetingName = document.getElementById("meetingName");
-	meetingName.innerHTML = localStorage.getItem("meetingname");
+	meetingName.innerHTML = " 会议名称： " + localStorage.getItem("meetingname");
 	var location = document.getElementById("location");
-	location.innerHTML = localStorage.getItem("meetinglocation");
+	location.innerHTML = " 会议地点： " + localStorage.getItem("meetinglocation");
 	var start_time = document.getElementById("start_time");
-	start_time.innerHTML = localStorage.getItem("start_time");
+	start_time.innerHTML = " 会议时间： " + localStorage.getItem("start_time");
 	var meetingFile = document.getElementById("meetingFile");
 	if(localStorage.getItem("meetingfile")){
 
-		meetingFile.innerHTML = localStorage.getItem("meetingfile");
+		meetingFile.innerHTML = " 会议文件：" + localStorage.getItem("meetingfile");
 		// meetingFile.href = localStorage.getItem("meetingfile");
 		console.log(meetingFile);
 		console.log(localStorage.getItem("meetingfile"));
@@ -85,7 +85,7 @@ function sendMeetingId() {
 		// meetingFile.src = localStorage.getItem("meetingfile");
 	}
 	else
-		meetingFile.innerHTML = "没有可下载文件";
+		meetingFile.innerHTML = " 会议文件： 没有可下载文件";
 }())
 
 document.getElementById("login_btn").onclick = function() {
