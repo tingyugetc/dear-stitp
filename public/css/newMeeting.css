@@ -41,14 +41,14 @@ body {
   left: 50%;
   /*background-color: #efefef;*/
   width:50%;
-  height: 50%;
+  height: 64%;
 
   -webkit-transform: translateX(-50%) translateY(-50%);
 }
 
 .div_white{
-	padding-bottom: 105%;
-	padding-top: 10%;
+	/*padding-bottom: 105%;*/
+	/*padding-top: 10%;*/
 	width: 90%;
 	/*padding-right: 20%;
 	padding-left: 20%;*/
