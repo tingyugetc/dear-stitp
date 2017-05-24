@@ -78,8 +78,8 @@ function sendMeetingId() {
 	if(localStorage.getItem("meetingfile")){
 
 		meetingFile.innerHTML = " 会议文件：" + localStorage.getItem("meetingfile");
-		var urlPre = "http://115.28.180.202:3000/"
-		meetingFile.href = urlPre + localStorage.getItem("meetingfile");
+		var urlPre = "http://115.28.180.202:3000/";
+		// meetingFile.href = urlPre + localStorage.getItem("meetingfile");
 		console.log(meetingFile);
 		console.log(localStorage.getItem("meetingfile"));
 		console.log(meetingFile.href);		
