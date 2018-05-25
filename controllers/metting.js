@@ -279,6 +279,7 @@ exports.userSign = function (req, res, next) {
             message: CodeMsg['10104'],
             date: ''
         });
+        return;
     }
 
     var result = shell.exec('cd /root/code/Seetaface/SeetaFaceEngine/FaceIdentification && ./build000/src/test/test_face_recognizer.bin /home/dear-stitp/public/upload/' + req.files[0].originalname);
@@ -296,6 +297,7 @@ exports.userSign = function (req, res, next) {
                 message: CodeMsg['10109'],
                 data: ''
             });
+            return;
         }
 
         UserPersonInfo.findOne({
@@ -320,6 +322,7 @@ exports.userSign = function (req, res, next) {
                                 message: CodeMsg['10107'],
                                 data: ''
                             });
+                            return;
                         }
 
                         UserMeeting.findOne({
@@ -386,8 +389,7 @@ exports.userSignalList = function (req, res, next) {
                     message: CodeMsg['10104'],
                     data:''
                 })
-            }
-            else{
+            } else{
                 console.log(meetings);
                 res.json({
                     code: 200,
@@ -422,8 +424,7 @@ exports.meetingMessage = function (req, res, next) {
                     message: CodeMsg['10104'],
                     data:''
                 });
-            }
-            else{
+            } else{
                 res.json({
                     code: 200,
                     message: CodeMsg[200],
